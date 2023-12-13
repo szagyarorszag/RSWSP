@@ -4,25 +4,25 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Message {
-    private String sender;
-    private String recipient;
+    private Employee sender;
+    private Employee recipient;
     private String message;
     private Date sendTime;
 
     public Message() {}
 
-    public Message(User sender, User recipient, String message, Date sendTime) {
-        this.sender = sender.getId();
-        this.recipient = recipient.getId();
+    public Message(Employee sender, Employee recipient, String message, Date sendTime) {
+        this.sender = sender;
+        this.recipient = recipient;
         this.message = message;
         this.sendTime = sendTime;
     }
 
-    public String getSender() {
+    public Employee getSender() {
         return sender;
     }
 
-    public String getRecipient() {
+    public Employee getRecipient() {
         return recipient;
     }
 
@@ -42,11 +42,11 @@ public class Message {
         this.message = message;
     }
 
-    public void setRecipient(String recipient) {
+    public void setRecipient(Employee recipient) {
         this.recipient = recipient;
     }
 
-    public void setSender(String sender) {
+    public void setSender(Employee sender) {
         this.sender = sender;
     }
 
@@ -65,8 +65,8 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                "sender=" + sender +
-                ", recipient=" + recipient +
+                "sender=" + sender.getId() + ' ' + sender.getName() +
+                ", recipient=" + recipient.getId() + ' ' + recipient.getName() +
                 ", message='" + message + '\'' +
                 ", sendTime=" + sendTime +
                 '}';

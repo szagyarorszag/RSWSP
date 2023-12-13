@@ -112,6 +112,4 @@ public class Database {
     public void setStudents(Vector<Student> students) {
         this.students = students;
     }
-
-
 }
