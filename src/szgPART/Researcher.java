@@ -1,4 +1,4 @@
 package szgPART;
 
-public class Researcher {
+public class Researcher extends User {
 }
