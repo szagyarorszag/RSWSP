@@ -3,18 +3,20 @@ package szgPART;
 import java.util.Vector;
 
 public class Database {
-    private static Vector<Student> students;
-    private static Vector<Teacher> teachers;
-    private static Vector<Employee> employees;
-    private static Vector<Researcher> researchers;
-    private static Vector<Organization> organizations;
-    private static Vector<Request> requests;
-    private static Vector<Report> reports;
-    private static Vector<Admin> admins;
-    private static Vector<Manager> managers;
-    private static Vector<ResearchPaper> researchPapers;
-    private static Vector<ResearchProject> researchProjects;
-    private static Vector<User> users;
+    public static Vector<Student> students;
+    public static Vector<Teacher> teachers;
+    public static Vector<Employee> employees;
+    public static Vector<Researcher> researchers;
+    public static Vector<Organization> organizations;
+    public static Vector<Request> requests;
+    public static Vector<Report> reports;
+    public static Vector<Admin> admins;
+    public static Vector<Manager> managers;
+    public static Vector<ResearchPaper> researchPapers;
+    public static Vector<ResearchProject> researchProjects;
+    public static Vector<User> users;
+    public static Vector<OR> ors;
+    public static Vector<Dean> deans;
 
 
     public Vector<Student> getStudents() {

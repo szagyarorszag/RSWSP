@@ -1,4 +1,4 @@
 package szgPART;
 
-public class Manager {
+public abstract class Manager {
 }

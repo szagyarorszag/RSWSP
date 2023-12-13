@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public class User implements Serializable, Cloneable{
+public abstract class User implements Serializable, Cloneable, Comparable {
     private String name;
     private String surname;
     private Date birthDate;
@@ -98,6 +98,11 @@ public class User implements Serializable, Cloneable{
     }
 
     @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
@@ -131,5 +136,17 @@ public class User implements Serializable, Cloneable{
                 ", id='" + id + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", gender=" + gender;
+    }
+
+
+    @Override
+    public User clone() {
+        try {
+            User clone = (User) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
