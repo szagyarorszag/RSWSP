@@ -18,6 +18,7 @@ public class Database {
     public static Vector<OR> ors;
     public static Vector<Dean> deans;
     public static Vector<News> newss;
+    public static Vector<Course> courses;
 
 
     public Vector<Student> getStudents() {
