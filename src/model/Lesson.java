@@ -1,10 +1,10 @@
 package model;
-
+import java.time.*;
 public class Lesson {
     private RegisteredCourse course;
     private Week day;
-    private int startHour;
-    private int endHour;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private String room;
     private Format format;
     private LessonType lessonType;
@@ -15,11 +15,11 @@ public class Lesson {
         // Default constructor
     }
 
-    public Lesson(RegisteredCourse course, Week day, int startHour, int endHour, Teacher teacher, String room, Format format, LessonType lessonType, int numberOfStudents) {
+    public Lesson(RegisteredCourse course, Week day, LocalTime startTime, LocalTime endTime, Teacher teacher, String room, Format format, LessonType lessonType, int numberOfStudents) {
         this.course = course;
         this.day = day;
-        this.startHour = startHour;
-        this.endHour = endHour;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.teacher=teacher;
         this.room = room;
         this.format = format;
@@ -94,7 +94,9 @@ public class Lesson {
             setRoom("0");
         }
     }
-
+    public boolean overlaps(Lesson lesson) {
+        return !(this.endTime.isBefore(lesson.startTime) || lesson.endTime.isBefore(this.startTime));
+    }
     public LessonType getLessonType() {
         return lessonType;
     }

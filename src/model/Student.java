@@ -58,12 +58,12 @@ public class Student extends User{
 
 
     // Academic operations
-    public void registerForCourse(Course course) {
+    public void registerForCourseRequest(Course course) {
         //TODO: Admin
         // Logic to register the student for a course
     }
 
-    public void dropCourse(RegisteredCourse registeredCourse) {
+    public void dropCourseRequest(RegisteredCourse registeredCourse) {
         //TODO: Admin
         // Logic to drop a course
     }
