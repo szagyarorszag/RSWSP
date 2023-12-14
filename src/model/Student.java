@@ -21,7 +21,7 @@ public class Student extends User{
     private Transcript transcript;
     private Vector<Course> enrolledCourses;
     private Vector<RegisteredCourse> registeredCourses;
-    //TODO: private Vector<Organization> organizations;
+    private Vector<Map<Organization, OrganizationRole> > organizations;
 
     //Default Constructor
     public Student()
@@ -38,17 +38,10 @@ public class Student extends User{
         this.registeredCourses = new Vector<>();
         this.faculty=faculty;
         this.yearOfStudy=yearOfStudy;
-        //TODO: this.organizations = new Vector<>();
+        this.organizations = new Vector<>();
     }
 
     // Accessors and Mutators for personal information
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
 
     public String getCorporativeEmail() {
         return corporativeEmail;
@@ -62,14 +55,6 @@ public class Student extends User{
 
 
     // Setters for personal information
-    public void setName(String firstName) {
-        this.name = firstName;
-    }
-
-    public void setSurname(String lastName) {
-        this.surname = lastName;
-    }
-
 
 
     // Academic operations
@@ -89,41 +74,43 @@ public class Student extends User{
     }
 
     public double getGPA() {
-        // Logic to fetch the overall GPA from the transcript
-        return 0.0;
+        return this.transcript.getGPA();
     }
 
     public String viewTranscript() {
-        // Logic to display the student's transcript
-        return "";
+
+        return this.transcript.viewTranscript();
+    }
+    public Transcript getTranscript() {
+
+        return this.transcript;
     }
 
     public Mark getCourseGrade(RegisteredCourse registeredCourse) {
         return this.transcript.getCourseMark(registeredCourse);
     }
 
-    public void updateAddress(String newAddress) {
-        // Logic to update the student's address
-    }
+
 
     public boolean isEnrolledInCourse(RegisteredCourse course) {
-        // Logic to check if the student is enrolled in a specific course
-        return false;
+
+        return course.isStudentOfCourse(this);
     }
 
     // Additional interactions
-    public void joinOrganization(Organization organization) {
-        // Logic to allow a student to join an organization
+    public void joinOrganization(Map<Organization,OrganizationRole> organization) {
+        this.organizations.add(organization);
     }
 
     public String viewOrganizations() {
-        // Logic to display the organizations a student is part of
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Map<Organization,OrganizationRole> organization:organizations){
+            stringBuilder.append(organization.toString()).append('\n');
+        }
+        return stringBuilder.toString();
     }
 
-    public void requestMeetingWithTeacher(Teacher teacher) {
-        // Logic to send a meeting request to a teacher
-    }
+
     public void addPointsToTranscript(RegisteredCourse course, double points) {
         this.transcript.setCourseMark(course,new Mark(points));
     }

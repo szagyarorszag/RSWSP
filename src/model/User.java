@@ -67,6 +67,10 @@ public abstract class User implements Serializable, Cloneable, Comparable {
     public String getAddress(){
         return address;
     }
+    //Address setter
+    public void updateAddress(String newAddress) {
+        this.address=newAddress;
+    }
 
     public Gender getGender() {
         return gender;
