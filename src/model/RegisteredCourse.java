@@ -48,4 +48,14 @@ public class RegisteredCourse extends Course{
         return "Year: "+ year + " semester: " + semester+ super.toString()+" number of students: "+numberOfStudents;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o==null || getClass()!=o.getClass()) return false;
+        RegisteredCourse course= (RegisteredCourse) o;
+        return id == course.id && title== course.title && credits == course.credits && faculty == course.faculty && year==course.year && numberOfStudents == course.numberOfStudents && semester==course.semester;
+    }
+
+
+
 }
