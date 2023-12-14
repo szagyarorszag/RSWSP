@@ -17,6 +17,7 @@ public class Database {
     public static Vector<User> users;
     public static Vector<OR> ors;
     public static Vector<Dean> deans;
+    public static Vector<News> newss;
 
 
     public Vector<Student> getStudents() {
@@ -65,6 +66,30 @@ public class Database {
 
     public Vector<User> getUsers() {
         return users;
+    }
+
+    public static Vector<News> getNewss() {
+        return newss;
+    }
+
+    public static Vector<OR> getOrs() {
+        return ors;
+    }
+
+    public static Vector<Dean> getDeans() {
+        return deans;
+    }
+
+    public static void setDeans(Vector<Dean> deans) {
+        Database.deans = deans;
+    }
+
+    public static void setOrs(Vector<OR> ors) {
+        Database.ors = ors;
+    }
+
+    public static void setNewss(Vector<News> newss) {
+        Database.newss = newss;
     }
 
     public void setUsers(Vector<User> users) {
