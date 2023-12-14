@@ -13,10 +13,9 @@ public class Dean extends Manager{
 
         for (Student student : Database.students) {
             if (course.isStudentOfCourse(student)) {
-                Transcript transcript = student.getTranscript();
-                Mark mark = transcript.getCourseMark(course);
-                Double courseMark = mark.getGPA();
-                averageMark += courseMark;
+                averageMark += student.getTranscript().
+                        getCourseMark(course).
+                        getGPA();
                 count++;
             }
         }
