@@ -1,5 +1,7 @@
 package model;
 
+import szgPART.Student;
+
 import java.util.*;
 
 public class Transcript {
@@ -12,27 +14,38 @@ public class Transcript {
 
     }
     public Transcript(Student owner){
+
         this.owner = owner;
+        this.marks = new Vector<>();
     }
 
     public void setCourseMark(RegisteredCourse course, Mark mark) {
+        boolean courseFound = false;
+
         for (Map<RegisteredCourse, Mark> markMap : marks) {
             if (markMap.containsKey(course)) {
-                numOfRetakes+=1;
+                numOfRetakes += 1;
+                markMap.put(course, mark);
+                courseFound = true;
+                break; // No need to continue once course is found and updated
             }
-            markMap.put(course, mark);
-            return;
         }
 
+        if (!courseFound) {
+            Map<RegisteredCourse, Mark> newMarkMap = new HashMap<>();
+            newMarkMap.put(course, mark);
+            marks.add(newMarkMap);
+        }
     }
 
     public int getNumOfRetakes() {
         return numOfRetakes;
     }
-    public Mark getCourseMark(RegisteredCourse course){
-        for (Map<RegisteredCourse,Mark> markMap : marks) {
-            for (RegisteredCourse c : markMap.keySet()) {
-                if(c.equals(course)) return markMap.get(course);
+    public Mark getCourseMark(RegisteredCourse course) {
+        for (Map<RegisteredCourse, Mark> markMap : marks) {
+            Mark mark = markMap.get(course);
+            if (mark != null) {
+                return mark;
             }
         }
         return null;

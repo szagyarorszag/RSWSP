@@ -2,7 +2,6 @@ package model;
 import java.time.LocalDateTime;
 import java.util.*;
 public class Mark {
-    public Mark(){}
     private double examPoints;
     private double firstAtt;
     private double secondAtt;
@@ -10,29 +9,54 @@ public class Mark {
     private String markLetter;
     private Map<String, Double> map;
     private double total;
-    public Mark(double points) throws Exception {
-        assignPoints(points, LocalDateTime.now());
+    public Mark() {
         this.map = createLetterToGPA();
     }
-
-    public Mark(double points, LocalDateTime localDateTime) throws Exception {
-        assignPoints(points, localDateTime);
+    public Mark(double points) {
         this.map = createLetterToGPA();
+        try{
+            this.addPoints(points);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public Mark(double points,LocalDateTime localDateTime) {
+        this.map = createLetterToGPA();
+        try{
+            this.addPoints(points,localDateTime);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    private void assignPoints(double points, LocalDateTime localDateTime) throws Exception {
-        int month = localDateTime.getMonthValue();
+    public void addPoints(double points) throws Exception {
+
+        int month = LocalDateTime.now().getMonthValue();
 
         if ((month >= 1 && month <= 2) || (month >= 9 && month <= 10)) {
-            this.firstAtt = points;
+            this.firstAtt += points;
         } else if ((month >= 3 && month <= 4) || (month == 11)) {
-            this.secondAtt = points;
+            this.secondAtt += points;
         } else if (month == 5 || month == 12) {
-            this.examPoints = points;
+            this.examPoints += points;
         } else {
             throw new Exception("We're on vacation");
         }
     }
+    public void addPoints(double points, LocalDateTime localDateTime) throws Exception {
+        int month = localDateTime.getMonthValue();
+
+        if ((month >= 1 && month <= 2) || (month >= 9 && month <= 10)) {
+            this.firstAtt += points;
+        } else if ((month >= 3 && month <= 4) || (month == 11)) {
+            this.secondAtt += points;
+        } else if (month == 5 || month == 12) {
+            this.examPoints += points;
+        } else {
+            throw new Exception("We're on vacation");
+        }
+    }
+
     //creates convenient dictionary to store gpa by letter
     private static Map<String, Double> createLetterToGPA() {
         Map<String, Double> map = new HashMap<>();
