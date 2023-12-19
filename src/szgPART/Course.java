@@ -9,7 +9,7 @@ public class Course {
     public  String id;
     public String title;
     public int credits;
-    public model.Course prereq;
+    public Course prereq;
     public Faculty faculty;
     public Course(String id, String title, int credits, Faculty faculty) {
         this.id = id;
@@ -17,7 +17,7 @@ public class Course {
         this.credits = credits;
         this.faculty = faculty;
     }
-    public Course(String id, String title, int credits, Faculty faculty, model.Course prereq) {
+    public Course(String id, String title, int credits, Faculty faculty, Course prereq) {
         this(id,title,credits,faculty);
         this.prereq=prereq;
     }
@@ -35,7 +35,7 @@ public class Course {
         return credits;
     }
 
-    public model.Course getPrereq() {
+    public Course getPrereq() {
         return prereq;
     }
 
@@ -47,7 +47,7 @@ public class Course {
         this.faculty = faculty;
     }
 
-    public void setPrereq(model.Course prereq) {
+    public void setPrereq(Course prereq) {
         this.prereq = prereq;
     }
 
