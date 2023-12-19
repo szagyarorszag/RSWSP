@@ -30,6 +30,10 @@ public class RegisteredCourse extends Course{
         return result.toString();
     }
 
+    public Vector<Student> getStudents(){
+        return students;
+    }
+
     public boolean isStudentOfCourse(Student student){
         for (Student s : students) {
             if(s.equals(student)) return true;

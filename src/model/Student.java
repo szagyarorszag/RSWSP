@@ -69,8 +69,14 @@ public class Student extends User{
     }
 
     public int calculateTotalCredits() {
-        // Logic to calculate total credits based on enrolled courses
-        return 0;
+        return this.transcript.getTotalCredits();
+    }
+    public int calculateThisSemesterCredits(int semester) {
+        int totalCreditsOfThisSemester = 0;
+        for(RegisteredCourse course:transcript.getCurrentSemesterCourses(semester)){
+            totalCreditsOfThisSemester+=course.credits;
+        }
+        return totalCreditsOfThisSemester;
     }
 
     public double getGPA() {
@@ -116,6 +122,23 @@ public class Student extends User{
     }
     public void addPointsToCourse(RegisteredCourse course, double points, LocalDateTime localDateTime) {
         this.transcript.setCourseMark(course,new Mark(points,localDateTime));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Student student = (Student) obj;
+        return super.equals((User) student) && this.faculty==student.faculty && this.yearOfStudy==student.yearOfStudy && this.transcript==student.transcript;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, id);
     }
 
 }

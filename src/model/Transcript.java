@@ -1,15 +1,17 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
-public class Transcript {
+
+public class Transcript{
     private Vector<Map<RegisteredCourse,Mark> >marks;
     private int numOfRetakes;
     private double gpa;
     private Student owner;
 
     public Transcript(){
-
+        numOfRetakes=0;
     }
     public Transcript(Student owner){
 
@@ -97,6 +99,27 @@ public class Transcript {
             }
         }
         return result.toString();
+    }
+    public int getTotalCredits(){
+        int total = 0;
+        for(Map<RegisteredCourse,Mark> markMap: marks){
+            for(RegisteredCourse course:markMap.keySet()){
+                total+=course.credits;
+            }
+        }
+        return total;
+    }
+    public Vector<RegisteredCourse> getCurrentSemesterCourses(int semester){
+        Vector<RegisteredCourse> currentSemesterCourses= new Vector<>();
+        for(Map<RegisteredCourse,Mark> markMap: marks){
+            for(RegisteredCourse course:markMap.keySet()){
+                if(LocalDateTime.now().getYear() == course.year && course.semester == semester){
+                    currentSemesterCourses.add(course);
+                }
+
+            }
+        }
+        return currentSemesterCourses;
     }
     @Override
     public String toString(){
