@@ -1,15 +1,10 @@
 package model;
 
-import szgPART.Gender;
-import szgPART.Organization;
-import szgPART.User;
-
+import java.util.*;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 
-public class Student extends User {
+public class Student extends User{
     private String name;
     private String surname;
     private Date birthDate;
@@ -35,7 +30,7 @@ public class Student extends User {
     }
 
     // Constructor
-    public Student(String name, String surname, Date birthDate, String id, int yearOfStudy, String login, String password, String phoneNumber, Gender gender, String studentId, String address, Faculty faculty) {
+    public Student(String name, String surname, Date birthDate,String id, int yearOfStudy,  String login, String password, String phoneNumber, Gender gender, String studentId, String address, Faculty faculty) {
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender);
         this.corporativeEmail = this.name.substring(0, 1).toLowerCase() + "_" + this.surname.toLowerCase() + "@rswsp.kz";
         this.transcript = new Transcript(this);
@@ -63,19 +58,25 @@ public class Student extends User {
 
 
     // Academic operations
-    public void registerForCourse(Course course) {
+    public void registerForCourseRequest(Course course) {
         //TODO: Admin
         // Logic to register the student for a course
     }
 
-    public void dropCourse(RegisteredCourse registeredCourse) {
+    public void dropCourseRequest(RegisteredCourse registeredCourse) {
         //TODO: Admin
         // Logic to drop a course
     }
 
     public int calculateTotalCredits() {
-        // Logic to calculate total credits based on enrolled courses
-        return 0;
+        return this.transcript.getTotalCredits();
+    }
+    public int calculateThisSemesterCredits(int semester) {
+        int totalCreditsOfThisSemester = 0;
+        for(RegisteredCourse course:transcript.getCurrentSemesterCourses(semester)){
+            totalCreditsOfThisSemester+=course.getCredits();
+        }
+        return totalCreditsOfThisSemester;
     }
 
     public double getGPA() {
@@ -121,6 +122,23 @@ public class Student extends User {
     }
     public void addPointsToCourse(RegisteredCourse course, double points, LocalDateTime localDateTime) {
         this.transcript.setCourseMark(course,new Mark(points,localDateTime));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Student student = (Student) obj;
+        return super.equals((User) student) && this.faculty==student.faculty && this.yearOfStudy==student.yearOfStudy && this.transcript==student.transcript;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, id);
     }
 
 }

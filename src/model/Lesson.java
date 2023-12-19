@@ -45,20 +45,20 @@ public class Lesson {
         this.day = day;
     }
 
-    public int getStartHour() {
-        return startHour;
+    public LocalTime getStartTime() {
+        return startTime;
     }
 
-    public void setStartHour(int startHour) {
-        this.startHour = startHour;
+    public void setStartHour(LocalTime startTime) {
+        this.startTime = startTime;
     }
 
-    public int getEndHour() {
-        return endHour;
+    public LocalTime getEndHour() {
+        return endTime;
     }
 
-    public void setEndHour(int endHour) {
-        this.endHour = endHour;
+    public void setEndHour(LocalTime endTime) {
+        this.endTime = endTime;
     }
     public Teacher getTeacher() {
         return teacher;
@@ -105,4 +105,3 @@ public class Lesson {
         this.lessonType = lessonType;
     }
 }
-

@@ -16,6 +16,21 @@ public abstract class User implements Serializable, Cloneable, Comparable {
     private String id;
     private String phoneNumber;
     private Gender gender;
+    public User() {}
+
+    public User(String name, String surname, Date birthDate, String corporativeEmail, String personalEmail, String login, String password, String id, String phoneNumber, Gender gender) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.corporativeEmail = corporativeEmail;
+        this.personalEmail = personalEmail;
+        this.login = login;
+        this.password = password;
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+
+    }
 
     public String getName() {
         return name;
