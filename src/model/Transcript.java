@@ -54,7 +54,7 @@ public class Transcript{
         Vector<RegisteredCourse> currentYearCourses = new Vector<>();
         for (Map<RegisteredCourse,Mark> markMap : marks) {
             for (RegisteredCourse course : markMap.keySet()) {
-                if(course.year == year && course.semester == semester) currentYearCourses.add(course);
+                if(course.getYear() == year && course.getSemester() == semester) currentYearCourses.add(course);
 
             }
         }
@@ -66,7 +66,7 @@ public class Transcript{
             for (Map.Entry<RegisteredCourse, Mark> entry : markMap.entrySet()) {
                 RegisteredCourse course = entry.getKey();
                 Mark mark = entry.getValue();
-                if(course.year == year && course.semester == semester) currentYearMarks.add(mark);
+                if(course.getYear() == year && course.getSemester() == semester) currentYearMarks.add(mark);
             }
         }
         return currentYearMarks;
@@ -95,7 +95,7 @@ public class Transcript{
             for (Map.Entry<RegisteredCourse, Mark> entry : markMap.entrySet()) {
                 RegisteredCourse course = entry.getKey();
                 Mark mark = entry.getValue();
-                result.append(course.title+": "+mark.getMarkLetter()).append("\n");
+                result.append(course.getTitle()+": "+mark.getMarkLetter()).append("\n");
             }
         }
         return result.toString();
@@ -104,7 +104,7 @@ public class Transcript{
         int total = 0;
         for(Map<RegisteredCourse,Mark> markMap: marks){
             for(RegisteredCourse course:markMap.keySet()){
-                total+=course.credits;
+                total+=course.getCredits();
             }
         }
         return total;
@@ -113,7 +113,7 @@ public class Transcript{
         Vector<RegisteredCourse> currentSemesterCourses= new Vector<>();
         for(Map<RegisteredCourse,Mark> markMap: marks){
             for(RegisteredCourse course:markMap.keySet()){
-                if(LocalDateTime.now().getYear() == course.year && course.semester == semester){
+                if(LocalDateTime.now().getYear() == course.getYear() && course.getSemester() == semester){
                     currentSemesterCourses.add(course);
                 }
 
@@ -128,7 +128,7 @@ public class Transcript{
             for (Map.Entry<RegisteredCourse, Mark> entry : markMap.entrySet()) {
                 RegisteredCourse course = entry.getKey();
                 Mark mark = entry.getValue();
-                result.append(course.title+": "+mark.getMarkLetter()).append("\n");
+                result.append(course.getTitle()+": "+mark.getMarkLetter()).append("\n");
             }
         }
         return result.toString();

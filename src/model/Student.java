@@ -74,7 +74,7 @@ public class Student extends User{
     public int calculateThisSemesterCredits(int semester) {
         int totalCreditsOfThisSemester = 0;
         for(RegisteredCourse course:transcript.getCurrentSemesterCourses(semester)){
-            totalCreditsOfThisSemester+=course.credits;
+            totalCreditsOfThisSemester+=course.getCredits();
         }
         return totalCreditsOfThisSemester;
     }

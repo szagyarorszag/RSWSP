@@ -4,11 +4,11 @@ import java.util.*;
 
 public class RegisteredCourse extends Course{
     public RegisteredCourse(){}
-    public int year;
-    public int semester;
+    private int year;
+    private int semester;
     //TODO
     //protected Vector<Teacher> teachers;
-    public int numberOfStudents;
+    private int numberOfStudents;
     private Vector<Student> students;
     public RegisteredCourse(String id, String title, int credits, Faculty faculty, int year, int semester, int numberOfStudents){
         super(id,title,credits,faculty);
@@ -21,6 +21,24 @@ public class RegisteredCourse extends Course{
         this.year=year;
         this.numberOfStudents=numberOfStudents;
         this.semester = semester;
+    }
+    public int getNumberOfStudents(){
+        return this.numberOfStudents;
+    }
+    public void setNumberOfStudents(int numberOfStudents){
+        this.numberOfStudents=numberOfStudents;
+    }
+    public int getYear(){
+        return this.getYear();
+    }
+    public void setYear(int year){
+        this.year = year;
+    }
+    public int getSemester(){
+        return this.semester;
+    }
+    public void setSemester(int semester){
+        this.semester=semester;
     }
     public String getStudentsInfo(){
         StringBuilder result = new StringBuilder();
@@ -57,7 +75,7 @@ public class RegisteredCourse extends Course{
         if(this == o) return true;
         if(o==null || getClass()!=o.getClass()) return false;
         RegisteredCourse course= (RegisteredCourse) o;
-        return id == course.id && title== course.title && credits == course.credits && faculty == course.faculty && year==course.year && numberOfStudents == course.numberOfStudents && semester==course.semester;
+        return super.equals(course) && year==course.year && numberOfStudents == course.numberOfStudents && semester==course.semester;
     }
 
 

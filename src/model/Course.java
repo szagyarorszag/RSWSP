@@ -1,12 +1,13 @@
 package model;
 
 public class Course {
+
+    private  String id;
+    private String title;
+    private int credits;
+    private Course prereq;
+    private Faculty faculty;
     public Course(){}
-    public  String id;
-    public String title;
-    public int credits;
-    public Course prereq;
-    public Faculty faculty;
     public Course(String id, String title, int credits, Faculty faculty) {
         this.id = id;
         this.title = title;
@@ -18,6 +19,49 @@ public class Course {
     public Course(String id, String title, int credits, Faculty faculty, Course prereq) {
         this(id, title, credits, faculty);
         this.prereq = prereq;
+    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    // Getter and Setter for title
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    // Getter and Setter for credits
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    // Getter and Setter for prereq
+    public Course getPrereq() {
+        return prereq;
+    }
+
+    public void setPrereq(Course prereq) {
+        this.prereq = prereq;
+    }
+
+    // Getter and Setter for faculty
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
     @Override
     public String toString() {

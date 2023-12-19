@@ -37,9 +37,9 @@ class AllClassesTest {
         assertEquals("Advanced Programming", regCourse.title);
         assertEquals(4, regCourse.credits);
         assertEquals(Faculty.CS, regCourse.faculty);
-        assertEquals(2023, regCourse.year);
-        assertEquals(1, regCourse.semester);
-        assertEquals(50, regCourse.numberOfStudents);
+        assertEquals(2023, regCourse.getYear());
+        assertEquals(1, regCourse.getSemester());
+        assertEquals(50, regCourse.getNumberOfStudents());
 
         // Test Transcript class
         Transcript transcript = new Transcript(student);
