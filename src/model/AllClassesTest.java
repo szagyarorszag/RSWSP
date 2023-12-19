@@ -25,18 +25,18 @@ class AllClassesTest {
         // Test Course class
         Course course = new Course("CS101", "Introduction to Programming", 3, Faculty.CS);
 
-        assertEquals("CS101", course.id);
-        assertEquals("Introduction to Programming", course.title);
-        assertEquals(3, course.credits);
-        assertEquals(Faculty.CS, course.faculty);
+        assertEquals("CS101", course.getId());
+        assertEquals("Introduction to Programming", course.getTitle());
+        assertEquals(3, course.getCredits());
+        assertEquals(Faculty.CS, course.getFaculty());
 
         // Test RegisteredCourse class
         RegisteredCourse regCourse = new RegisteredCourse("CS201", "Advanced Programming", 4, Faculty.CS, 2023, 1, 50);
 
-        assertEquals("CS201", regCourse.id);
-        assertEquals("Advanced Programming", regCourse.title);
-        assertEquals(4, regCourse.credits);
-        assertEquals(Faculty.CS, regCourse.faculty);
+        assertEquals("CS201", regCourse.getId());
+        assertEquals("Advanced Programming", regCourse.getTitle());
+        assertEquals(4, regCourse.getCredits());
+        assertEquals(Faculty.CS, regCourse.getFaculty());
         assertEquals(2023, regCourse.getYear());
         assertEquals(1, regCourse.getSemester());
         assertEquals(50, regCourse.getNumberOfStudents());

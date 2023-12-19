@@ -5,16 +5,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Student extends User{
-    private String name;
-    private String surname;
-    private Date birthDate;
     private String corporativeEmail;
-    private String login;
-    private String password;
-    private String id;
-    private String phoneNumber;
-    private Gender gender;
-
 
     private Faculty faculty;
     private int yearOfStudy;
@@ -32,7 +23,7 @@ public class Student extends User{
     // Constructor
     public Student(String name, String surname, Date birthDate,String id, int yearOfStudy,  String login, String password, String phoneNumber, Gender gender, String studentId, String address, Faculty faculty) {
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender);
-        this.corporativeEmail = this.name.substring(0, 1).toLowerCase() + "_" + this.surname.toLowerCase() + "@rswsp.kz";
+        this.corporativeEmail = name.substring(0, 1).toLowerCase() + "_" + surname.toLowerCase() + "@rswsp.kz";
         this.transcript = new Transcript(this);
         this.enrolledCourses = new Vector<>();
         this.registeredCourses = new Vector<>();
@@ -138,7 +129,7 @@ public class Student extends User{
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, id);
+        return Objects.hash(corporativeEmail, faculty, yearOfStudy,transcript);
     }
 
 }

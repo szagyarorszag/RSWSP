@@ -29,7 +29,7 @@ public class RegisteredCourse extends Course{
         this.numberOfStudents=numberOfStudents;
     }
     public int getYear(){
-        return this.getYear();
+        return this.year;
     }
     public void setYear(int year){
         this.year = year;
@@ -47,6 +47,8 @@ public class RegisteredCourse extends Course{
         }
         return result.toString();
     }
+
+
 
     public Vector<Student> getStudents(){
         return students;
