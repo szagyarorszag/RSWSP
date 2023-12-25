@@ -15,10 +15,12 @@ public class OR extends Manager {
     }
 
     public void approveRegistration(RegisteredCourse registeredCourse, int numberOfStudents, int credits, int semester, String id, Course prereq) {
-        registeredCourse.numberOfStudents = numberOfStudents;
-        registeredCourse.credits = credits;
-        registeredCourse.semester = semester;
-        registeredCourse.prereq = prereq;
+        registeredCourse.setNumberOfStudents(numberOfStudents);
+        registeredCourse.setCredits(credits);
+        registeredCourse.setSemester(semester);
+        try {
+            registeredCourse.setPrereq(prereq);
+        } catch ()
     }
 
 

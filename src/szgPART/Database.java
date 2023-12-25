@@ -1,8 +1,9 @@
 package szgPART;
 
+import java.io.*;
 import java.util.Vector;
 
-public class Database {
+public class Database implements Serializable {
     public static Vector<Student> students;
     public static Vector<Teacher> teachers;
     public static Vector<Employee> employees;
@@ -15,12 +16,32 @@ public class Database {
     public static Vector<ResearchPaper> researchPapers;
     public static Vector<ResearchProject> researchProjects;
     public static Vector<User> users;
-    public static Vector<OR> ors;
-    public static Vector<Dean> deans;
     public static Vector<News> newss;
     public static Vector<Course> courses;
 
-
+    public static void saveObjectToFile(Object obj, String filename) {
+        try (FileOutputStream fos = new FileOutputStream(filename);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(obj);
+        } catch (IOException ioe) {
+            System.out.println("Error saving object to file: " + filename);
+            ioe.printStackTrace();
+        }
+    }
+    public static Object loadObjectFromFile(String filename) {
+        Object obj = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            obj = ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return obj;
+    }
     public Vector<Student> getStudents() {
         return students;
     }
@@ -71,22 +92,6 @@ public class Database {
 
     public static Vector<News> getNewss() {
         return newss;
-    }
-
-    public static Vector<OR> getOrs() {
-        return ors;
-    }
-
-    public static Vector<Dean> getDeans() {
-        return deans;
-    }
-
-    public static void setDeans(Vector<Dean> deans) {
-        Database.deans = deans;
-    }
-
-    public static void setOrs(Vector<OR> ors) {
-        Database.ors = ors;
     }
 
     public static void setNewss(Vector<News> newss) {

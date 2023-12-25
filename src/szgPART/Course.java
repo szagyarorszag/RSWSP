@@ -1,44 +1,60 @@
-package szgPART;
-
-import model.Faculty;
-
-import java.util.Objects;
+package szgPARTzz;
 
 public class Course {
+    private  String id;
+    private String title;
+    private int credits;
+    private Course prereq;
+    private Faculty faculty;
     public Course(){}
-    public  String id;
-    public String title;
-    public int credits;
-    public Course prereq;
-    public Faculty faculty;
     public Course(String id, String title, int credits, Faculty faculty) {
         this.id = id;
         this.title = title;
         this.credits = credits;
         this.faculty = faculty;
     }
+    //overloading constructor for course variability
+    //course may have not prereq
     public Course(String id, String title, int credits, Faculty faculty, Course prereq) {
-        this(id,title,credits,faculty);
-        this.prereq=prereq;
+        this(id, title, credits, faculty);
+        this.prereq = prereq;
     }
-
-
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    // Getter and Setter for title
     public String getTitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    // Getter and Setter for credits
     public int getCredits() {
         return credits;
     }
 
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    // Getter and Setter for prereq
     public Course getPrereq() {
         return prereq;
     }
 
+    public void setPrereq(Course prereq) {
+        this.prereq = prereq;
+    }
+
+    // Getter and Setter for faculty
     public Faculty getFaculty() {
         return faculty;
     }
@@ -46,39 +62,6 @@ public class Course {
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
-
-    public void setPrereq(Course prereq) {
-        this.prereq = prereq;
-    }
-
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Course course)) return false;
-        return getCredits() == course.getCredits()
-                && Objects.equals(getId(), course.getId())
-                && Objects.equals(getTitle(), course.getTitle())
-                && Objects.equals(getPrereq(), course.getPrereq())
-                && getFaculty() == course.getFaculty();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getCredits(), getPrereq(), getFaculty());
-    }
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
