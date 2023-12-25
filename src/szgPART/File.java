@@ -12,7 +12,7 @@ public class File implements FileActions {
             ioe.printStackTrace();
         }
     }
-    publicss Object loadObjectFromFile(String filename) {
+    public Object loadObjectFromFile(String filename) {
         Object obj = null;
         try (FileInputStream fis = new FileInputStream(filename);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
