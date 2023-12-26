@@ -10,18 +10,14 @@ public class Log implements Comparable<Log> {
     private LocalDate date;
     private String userId;
     private String action;
-    private Level level;
-    private String message;
 
     {
         this.date = LocalDate.now();
     }
 
-    public Log(String userId, String action, Level level, String message) {
+    public Log(String userId, String action) {
         this.userId = userId;
         this.action = action;
-        this.level = level;
-        this.message = message;
     }
 
     // getters and setters
@@ -37,14 +33,6 @@ public class Log implements Comparable<Log> {
         return action;
     }
 
-    public Level getLevel() {
-        return level;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
     @Override
     public int compareTo(Log other) {
         return this.date.compareTo(other.date);
@@ -52,6 +40,6 @@ public class Log implements Comparable<Log> {
 
     @Override
     public String toString() {
-        return this.date + " " + this.level + " " + this.userId + " " + this.action + " " + this.message;
+        return this.date + " " + this.userId + " " + this.action + " ";
     }
 }

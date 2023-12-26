@@ -34,7 +34,8 @@ public abstract class Manager extends Employee {
 
         }
     }
-
+    /*assign courses to teachers*/
+    /*get all students and teachers*/
     public double createStatisticalReport(RegisteredCourse course){
         double averageMark = 0;
         int count = 0;
