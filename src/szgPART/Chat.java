@@ -24,7 +24,7 @@ public class Chat implements Serializable {
     }
 
     private Integer generateChatId(Employee employee1, Employee employee2) {
-        Integer sumId = employee1.getId().hashCode() + employee2.getId().hashCode();
+        Integer sumId = employee1.getId().hashCode() * employee2.getId().hashCode();
         return Objects.hash(sumId);
     }
 

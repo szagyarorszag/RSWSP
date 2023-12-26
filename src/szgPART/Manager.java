@@ -1,7 +1,6 @@
 package szgPART;
 
 import model.RegisteredCourse;
-
 import java.io.IOException;
 
 public abstract class Manager extends Employee {
@@ -25,7 +24,7 @@ public abstract class Manager extends Employee {
         course = course2;
     }
 
-    /*public void approveRegistration(RegisteredCourse registeredCourse, int numberOfStudents, int credits, int semester, String id, Course prereq) {
+    public void approveRegistration(RegisteredCourse registeredCourse, int numberOfStudents, int credits, int semester, String id, Course prereq) {
         registeredCourse.setNumberOfStudents(numberOfStudents);
         registeredCourse.setCredits(credits);
         registeredCourse.setSemester(semester);
@@ -34,9 +33,9 @@ public abstract class Manager extends Employee {
         } catch (IOException ioe) {
 
         }
-    }*/
+    }
 
-    /*public double createStatisticalReport(RegisteredCourse course){
+    public double createStatisticalReport(RegisteredCourse course){
         double averageMark = 0;
         int count = 0;
 
@@ -48,5 +47,5 @@ public abstract class Manager extends Employee {
             }
         }
         return averageMark/count;
-    }*/
+    }
 }

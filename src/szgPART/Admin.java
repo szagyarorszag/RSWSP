@@ -1,5 +1,7 @@
 package szgPART;
 
+import java.util.Vector;
+
 public class Admin {
 
     public Admin() {}
@@ -23,6 +25,10 @@ public class Admin {
     }
     public void deleteResearcher(String researcherId){
         Database.researchers.remove(researcherId);
+    }
+
+    public Vector<Object> getLogs() {
+        return Database.loadObjectsFromFile("src/assets/logs.ser");
     }
 
 
