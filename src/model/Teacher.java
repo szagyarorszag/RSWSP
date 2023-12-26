@@ -12,7 +12,7 @@ public class Teacher extends Employee{
         super();
 
     }
-    public Teacher(String name, String surname, Date birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender, int workExperience, Faculty faculty, TeacherType teacherType){
+    public Teacher(String name, String surname, LocalDate birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender, int workExperience, Faculty faculty, TeacherType teacherType){
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender,workExperience);
         this.faculty = faculty;
         this.teacherType = teacherType;

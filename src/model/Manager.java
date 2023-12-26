@@ -1,6 +1,7 @@
 package model;
 
-import java.util.Date;
+import java.util.*;
+import java.time.LocalDate;
 
 public class Manager extends Employee {
 
@@ -9,9 +10,12 @@ public class Manager extends Employee {
     public Manager(){
         super();
     }
-    public Manager(String name, String surname, Date birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender,  double salary, int workExperience, ManagerType managerType){
-        this.managerType=managerType;
+    public Manager(String name, String surname, LocalDate birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender,  double salary, int workExperience){
+        super(name, surname, birthDate, id, login, password, phoneNumber, address, gender, workExperience);
+
     }
+
+
     public void addNews(News news){
         Database.newss.add(news);
     }
@@ -45,6 +49,10 @@ public class Manager extends Employee {
         RegisteredCourse registeredCourse=(RegisteredCourse) course;
         registeredCourse.setYear(year); registeredCourse.setSemester(semester); registeredCourse.setNumberOfStudents(numberOfStudents);
         return registeredCourse;
+    }
+
+    public void deleteFromCourse(RegisteredCourse course, Student student){
+        course.removeStudent(student);
     }
     public void registerStudent(RegisteredCourse course, Student student){
         course.registerStudent(student);

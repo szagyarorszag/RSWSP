@@ -1,7 +1,5 @@
 package model;
 
-import szgPART.ResearchPaper;
-import szgPART.Researcher;
 
 import java.util.Date;
 import java.util.Vector;
@@ -19,8 +17,8 @@ public class GraduateStudent extends Student{
     }
 
     public void setSupervisor(Researcher supervisor) {
-        //TODO: if(supervisor.getHIndex()<3){System.out.println("h-index of " + supervisor.getName() +" lower than 3!)}
-        //else
+        ResearcherDecorator decoratorSupervisor = (ResearcherDecorator) supervisor;
+        if(decoratorSupervisor.calculateHIndex()<3)System.out.println("h-index of " + decoratorSupervisor.getName() +" lower than 3!");
         this.supervisor = supervisor;
 
     }

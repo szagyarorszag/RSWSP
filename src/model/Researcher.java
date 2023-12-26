@@ -1,5 +1,5 @@
 package model;
 
 public interface Researcher {
-    public void conductResearch();
+    public String conductResearch();
 }

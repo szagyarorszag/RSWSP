@@ -2,7 +2,7 @@ package model;
 
 import java.util.*;
 import java.time.LocalDate;
-public class Employee extends User {
+public class Employee extends User implements Observer {
     private LocalDate hireDate;
     private double salary;
     private int workExperience;
@@ -11,7 +11,7 @@ public class Employee extends User {
     public Employee(){
         super();
     }
-    public Employee(String name, String surname, Date birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender, int workExperience) {
+    public Employee(String name, String surname, LocalDate birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender, int workExperience) {
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender);
         this.chats = new ArrayList<>();
         this.salary=0;
@@ -19,7 +19,7 @@ public class Employee extends User {
         this.hireDate=LocalDate.now();
     }
 
-    public Employee(String name, String surname, Date birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender,  double salary, int workExperience) {
+    public Employee(String name, String surname, LocalDate birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender,  double salary, int workExperience) {
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender);
         this.chats = new ArrayList<>();
         this.salary=salary;
@@ -62,6 +62,11 @@ public class Employee extends User {
     public void createChat(Employee otherEmployee) {
         Chat newChat = new Chat(this, otherEmployee);
         chats.add(newChat);
+    }
+    @Override
+    public void update(){
+        System.out.println("Latest request is done by Tech Support");
+
     }
 
     /**
