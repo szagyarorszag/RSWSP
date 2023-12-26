@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public class User implements Serializable {
+public abstract class User implements Serializable, Researcher {
     private String name;
     private String surname;
     private Date birthDate;
@@ -156,6 +156,10 @@ public class User implements Serializable {
                 && Objects.equals(getId(), user.getId())
                 && Objects.equals(getPhoneNumber(), user.getPhoneNumber())
                 && getGender() == user.getGender();
+    }
+    @Override
+    public void conductResearch(){
+        System.out.println("Making research ");
     }
 
     @Override
