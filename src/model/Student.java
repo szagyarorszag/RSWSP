@@ -1,10 +1,13 @@
 package model;
 
+import szgPART.Gender;
+import szgPART.User;
+
 import java.util.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Student extends User{
+public class Student extends User {
     private String name;
     private String surname;
     private Date birthDate;
@@ -30,7 +33,7 @@ public class Student extends User{
     }
 
     // Constructor
-    public Student(String name, String surname, Date birthDate,String id, int yearOfStudy,  String login, String password, String phoneNumber, Gender gender, String studentId, String address, Faculty faculty) {
+   /* public Student(String name, String surname, Date birthDate,String id, int yearOfStudy,  String login, String password, String phoneNumber, Gender gender, String studentId, String address, Faculty faculty) {
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender);
         this.corporativeEmail = this.name.substring(0, 1).toLowerCase() + "_" + this.surname.toLowerCase() + "@rswsp.kz";
         this.transcript = new Transcript(this);
@@ -39,7 +42,7 @@ public class Student extends User{
         this.faculty=faculty;
         this.yearOfStudy=yearOfStudy;
         this.organizations = new Vector<>();
-    }
+    }*/
 
     // Accessors and Mutators for personal information
 

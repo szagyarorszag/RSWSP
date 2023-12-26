@@ -1,7 +1,8 @@
 package mio_UserControl;
 import java.util.Vector;
+import szgPART.User;
 
-public class UserControl extends User{
+public class UserControl extends User {
 
     public boolean login() {
         return false;

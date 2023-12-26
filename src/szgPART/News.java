@@ -1,6 +1,8 @@
 package szgPART;
 
-public class News {
+import java.io.Serializable;
+
+public class News implements Serializable {
     private String title;
     private String text;
 
@@ -25,5 +27,13 @@ public class News {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                '}';
     }
 }

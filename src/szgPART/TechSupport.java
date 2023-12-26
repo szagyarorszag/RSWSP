@@ -7,6 +7,6 @@ public class TechSupport {
         return Database.reports;
     }
     public void completeReport() {
-        Database.reports.remove(Database.reports.lastElement())
+        Database.reports.remove(Database.reports.lastElement());
     }
 }

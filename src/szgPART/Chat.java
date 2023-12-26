@@ -1,9 +1,9 @@
 package szgPART;
 
+
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
 
 public class Chat implements Serializable {
     private String chatId;
@@ -40,49 +40,47 @@ public class Chat implements Serializable {
     }
 
 
-        /**
-         * Serialize the Chat object to a specified file.
-         *
-         * @param filename The name of the file to serialize the chat to.
-         * @throws IOException            If an I/O error occurs during serialization.
-         */
-        public void serialize (String filename) throws IOException {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-                oos.writeObject(this);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+    /**
+     * Serialize the Chat object to a specified file.
+     *
+     * @param filename The name of the file to serialize the chat to.
+     * @throws IOException            If an I/O error occurs during serialization.
+     */
+    public void serialize (String filename) throws IOException {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+            oos.writeObject(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+    }
 
-        /**
-         * Deserialize a Chat object from a specified file.
-         *
-         * @param filename The name of the file to deserialize the chat from.
-         * @return The deserialized Chat object.
-         * @throws IOException            If an I/O error occurs during deserialization.
-         * @throws ClassNotFoundException If the class of a serialized object cannot be found.
-         */
-        public static Chat deserialize (String filename) throws IOException, ClassNotFoundException {
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-                return (Chat) ois.readObject();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+    /**
+     * Deserialize a Chat object from a specified file.
+     *
+     * @param filename The name of the file to deserialize the chat from.
+     * @return The deserialized Chat object.
+     * @throws IOException            If an I/O error occurs during deserialization.
+     * @throws ClassNotFoundException If the class of a serialized object cannot be found.
+     */
+    public static Chat deserialize (String filename) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+            return (Chat) ois.readObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
+    }
 
-        @Override
-        public String toString () {
-            String allMessages = "";
-            for (Message message : messages) {
-                allMessages.concat(message.toString() + '\n');}
-            return chatId + ' ' + allMessages;
-        }
+    @Override
+    public String toString () {
+        String allMessages = "";
+        for (Message message : messages) {
+            allMessages.concat(message.toString() + '\n');}
+        return chatId + ' ' + allMessages;
+    }
 
 }
-
-
 
 
 

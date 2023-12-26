@@ -8,12 +8,6 @@ public class Admin {
     public void addResearcher(Researcher researcher){
         Database.researchers.add(researcher);
     }
-    public void addOR(OR or){
-        Database.ors.add(or);
-    }
-    public void addDean(Dean dean){
-        Database.deans.add(dean);
-    }
     public void addTeacher(Teacher teacher){
         Database.teachers.add(teacher);
     }

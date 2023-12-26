@@ -2,7 +2,7 @@ package mio_UserControl;
 
 import java.util.Comparator;
 
-public class GPACompatator implements Comparator<UserControl.User> {
+/*public class GPACompatator implements Comparator<User> {
 
     @Override
     public int compare(UserControl.User user1, UserControl.User user2) {
@@ -20,4 +20,4 @@ public class GPACompatator implements Comparator<UserControl.User> {
             return nameComparator.compare(user1, user2);
         }
     }
-}
+}*/

@@ -1,4 +1,4 @@
-package szgPARTzz;
+package szgPART;
 
 public class Course {
     private  String id;

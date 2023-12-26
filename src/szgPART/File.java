@@ -3,6 +3,7 @@ package szgPART;
 import java.io.*;
 
 public class File implements FileActions {
+    public File() {}
     public void saveObjectToFile(Object obj, String filename) {
         try (FileOutputStream fos = new FileOutputStream(filename);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {

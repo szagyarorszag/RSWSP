@@ -1,5 +1,5 @@
 package mio_UserView;
-
-public interface TeacherView extends Employee{
+import szgPART.Employee;
+public interface TeacherView  {
     void viewCourseStudents();
 }

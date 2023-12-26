@@ -10,7 +10,7 @@ public class Transcript{
     private double gpa;
     private Student owner;
 
-    public Transcript(){
+    public Transcript(szgPART.Student student){
         numOfRetakes=0;
     }
     public Transcript(Student owner){

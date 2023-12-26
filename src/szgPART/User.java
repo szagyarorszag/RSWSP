@@ -5,33 +5,56 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class User implements Serializable, Cloneable, Comparable {
+public abstract class User implements Serializable {
     private String name;
     private String surname;
     private Date birthDate;
     private String corporativeEmail;
-    private String personalEmail;
     private String login;
     private String password;
     private String id;
     private String phoneNumber;
+    private String address;
     private Gender gender;
-    public User() {}
+    private double hIndex;
+    //declared in user, since every person in the university can be researcher
+    private boolean researchStatus;
+    //Initialize constructor
+    public User(){
 
-    public User(String name, String surname, Date birthDate, String corporativeEmail, String personalEmail, String login, String password, String id, String phoneNumber, Gender gender) {
+    }
+    public User(String name, String surname, Date birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender){
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
-        this.corporativeEmail = corporativeEmail;
-        this.personalEmail = personalEmail;
+        this.id=id;
         this.login = login;
         this.password = password;
-        this.id = id;
         this.phoneNumber = phoneNumber;
+        this.address=address;
         this.gender = gender;
-
+        this.hIndex=0;
+        this.researchStatus=false;
+    }
+    // Getter method for hIndex
+    public double getHIndex() {
+        return hIndex;
     }
 
+    // Setter method for hIndex
+    public void setHIndex(double hIndex) {
+        this.hIndex = hIndex;
+    }
+
+    // Getter method for researchStatus
+    public boolean isResearchStatus() {
+        return researchStatus;
+    }
+
+    // Setter method for researchStatus
+    public void setResearchStatus(boolean researchStatus) {
+        this.researchStatus = researchStatus;
+    }
     public String getName() {
         return name;
     }
@@ -48,9 +71,6 @@ public abstract class User implements Serializable, Cloneable, Comparable {
         return corporativeEmail;
     }
 
-    public String getPersonalEmail() {
-        return personalEmail;
-    }
 
     public String getLogin() {
         return login;
@@ -66,6 +86,13 @@ public abstract class User implements Serializable, Cloneable, Comparable {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+    public String getAddress(){
+        return address;
+    }
+    //Address setter
+    public void updateAddress(String newAddress) {
+        this.address=newAddress;
     }
 
     public Gender getGender() {
@@ -92,9 +119,7 @@ public abstract class User implements Serializable, Cloneable, Comparable {
         this.login = login;
     }
 
-    public void setPersonalEmail(String personalEmail) {
-        this.personalEmail = personalEmail;
-    }
+
 
     public void setCorporativeEmail(String corporativeEmail) {
         this.corporativeEmail = corporativeEmail;
@@ -112,9 +137,10 @@ public abstract class User implements Serializable, Cloneable, Comparable {
         this.name = name;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+
+
+    public int compareTo(User u) {
+        return this.login.compareTo(u.login);
     }
 
     @Override
@@ -125,7 +151,6 @@ public abstract class User implements Serializable, Cloneable, Comparable {
                 && Objects.equals(getSurname(), user.getSurname())
                 && Objects.equals(getBirthDate(), user.getBirthDate())
                 && Objects.equals(getCorporativeEmail(), user.getCorporativeEmail())
-                && Objects.equals(getPersonalEmail(), user.getPersonalEmail())
                 && Objects.equals(getLogin(), user.getLogin())
                 && Objects.equals(getPassword(), user.getPassword())
                 && Objects.equals(getId(), user.getId())
@@ -135,7 +160,7 @@ public abstract class User implements Serializable, Cloneable, Comparable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getSurname(), getBirthDate(), getCorporativeEmail(), getPersonalEmail(), getLogin(), getPassword(), getId(), getPhoneNumber(), getGender());
+        return Objects.hash(getName(), getSurname(), getBirthDate(), getCorporativeEmail(),  getLogin(), getPassword(), getId(), getPhoneNumber(), getGender());
     }
 
     @Override
@@ -145,7 +170,6 @@ public abstract class User implements Serializable, Cloneable, Comparable {
                 ", surname='" + surname + '\'' +
                 ", birthDate=" + birthDate +
                 ", corporativeEmail='" + corporativeEmail + '\'' +
-                ", personalEmail='" + personalEmail + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", id='" + id + '\'' +

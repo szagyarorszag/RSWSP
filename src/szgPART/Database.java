@@ -4,6 +4,16 @@ import java.io.*;
 import java.util.Vector;
 
 public class Database implements Serializable {
+
+    public static void main(String[] args) {
+
+        News news = new News("Title", "Text");
+        String fileName = "src/assets/news.ser";
+        saveToFile(news, fileName);
+        System.out.println(loadNewsFromFile(fileName));
+        clearFile(fileName);
+
+    }
     public static Vector<Student> students;
     public static Vector<Teacher> teachers;
     public static Vector<Employee> employees;
@@ -19,7 +29,27 @@ public class Database implements Serializable {
     public static Vector<News> newss;
     public static Vector<Course> courses;
 
-    public static void saveObjectToFile(Object obj, String filename) {
+    /*public static void removeObjectFromFile(String filename, Object objToRemove) {
+        // Load all objects from the file
+        Vector<Object> objects = (Vector<Object>) loadObjectFromFile(filename);
+
+        // Remove the desired object
+        objects.remove(objToRemove);
+
+        // Overwrite the file with the modified list
+        saveObjectToFile(objects, filename);
+    }*/
+
+
+    public static void clearFile(String filename) {
+        try (FileOutputStream fos = new FileOutputStream(filename)) {
+            // This will clear the file
+        } catch (IOException ioe) {
+            System.out.println("Error clearing file: " + filename);
+            ioe.printStackTrace();
+        }
+    }
+    public static void saveToFile(Object obj, String filename) {
         try (FileOutputStream fos = new FileOutputStream(filename);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(obj);
@@ -28,11 +58,11 @@ public class Database implements Serializable {
             ioe.printStackTrace();
         }
     }
-    public static Object loadObjectFromFile(String filename) {
-        Object obj = null;
+    public static News loadNewsFromFile(String filename) {
+        News news = null;
         try (FileInputStream fis = new FileInputStream(filename);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
-            obj = ois.readObject();
+            news = (News) ois.readObject();
         } catch (IOException ioe) {
             System.out.println("Error reading file: " + filename);
             ioe.printStackTrace();
@@ -40,8 +70,185 @@ public class Database implements Serializable {
             System.out.println("Error loading object from file: " + filename);
             cnfe.printStackTrace();
         }
-        return obj;
+        return news;
     }
+    public static Student loadStudentFromFile(String filename) {
+        Student student = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            student = (Student) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return student;
+    }
+    public static Teacher loadTeacherFromFile(String filename) {
+        Teacher teacher = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            teacher = (Teacher) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return teacher;
+    }
+    public static Employee loadEmployeeFromFile(String filename) {
+        Employee employee = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            employee = (Employee) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return employee;
+    }
+
+    public static Researcher loadResearcherFromFile(String filename) {
+        Researcher researcher = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            researcher = (Researcher) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return researcher;
+    }
+
+    public static Organization loadOrganizationFromFile(String filename) {
+        Organization organization = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            organization = (Organization) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return organization;
+    }
+
+    public static Request loadRequestFromFile(String filename) {
+        Request request = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            request = (Request) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return request;
+    }
+
+    public static Report loadReportFromFile(String filename) {
+        Report report = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            report = (Report) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return report;
+    }
+
+    public static Admin loadAdminFromFile(String filename) {
+        Admin admin = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            admin = (Admin) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return admin;
+    }
+    public static Manager loadManagerFromFile(String filename) {
+        Manager manager = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            manager = (Manager) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return manager;
+    }
+
+    public static ResearchPaper loadResearchPaperFromFile(String filename) {
+        ResearchPaper researchPaper = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            researchPaper = (ResearchPaper) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return researchPaper;
+    }
+
+    public static ResearchProject loadResearchProjectFromFile(String filename) {
+        ResearchProject researchProject = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            researchProject = (ResearchProject) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return researchProject;
+    }
+
+    public static User loadUserFromFile(String filename) {
+        User user = null;
+        try (FileInputStream fis = new FileInputStream(filename);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            user = (User) ois.readObject();
+        } catch (IOException ioe) {
+            System.out.println("Error reading file: " + filename);
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error loading object from file: " + filename);
+            cnfe.printStackTrace();
+        }
+        return user;
+    }
+
     public Vector<Student> getStudents() {
         return students;
     }
@@ -94,55 +301,4 @@ public class Database implements Serializable {
         return newss;
     }
 
-    public static void setNewss(Vector<News> newss) {
-        Database.newss = newss;
-    }
-
-    public void setUsers(Vector<User> users) {
-        this.users = users;
-    }
-
-    public void setResearchProjects(Vector<ResearchProject> researchProjects) {
-        this.researchProjects = researchProjects;
-    }
-
-    public void setResearchPapers(Vector<ResearchPaper> researchPapers) {
-        this.researchPapers = researchPapers;
-    }
-
-    public void setManagers(Vector<Manager> managers) {
-        this.managers = managers;
-    }
-
-    public void setAdmins(Vector<Admin> admins) {
-        this.admins = admins;
-    }
-
-    public void setReports(Vector<Report> reports) {
-        this.reports = reports;
-    }
-
-    public void setRequests(Vector<Request> requests) {
-        this.requests = requests;
-    }
-
-    public void setOrganizations(Vector<Organization> organizations) {
-        this.organizations = organizations;
-    }
-
-    public void setResearchers(Vector<Researcher> researchers) {
-        this.researchers = researchers;
-    }
-
-    public void setEmployees(Vector<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public void setTeachers(Vector<Teacher> teachers) {
-        this.teachers = teachers;
-    }
-
-    public void setStudents(Vector<Student> students) {
-        this.students = students;
-    }
 }

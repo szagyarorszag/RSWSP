@@ -1,17 +1,18 @@
 package szgPART;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Message {
     private Employee sender;
     private Employee recipient;
     private String message;
-    private Date sendTime;
+    private LocalDate sendTime;
 
     public Message() {}
 
-    public Message(Employee sender, Employee recipient, String message, Date sendTime) {
+    public Message(Employee sender, Employee recipient, String message, LocalDate sendTime) {
         this.sender = sender;
         this.recipient = recipient;
         this.message = message;
@@ -30,11 +31,11 @@ public class Message {
         return message;
     }
 
-    public Date getSendTime() {
+    public LocalDate getSendTime() {
         return sendTime;
     }
 
-    public void setSendTime(Date sendTime) {
+    public void setSendTime(LocalDate sendTime) {
         this.sendTime = sendTime;
     }
 

@@ -14,14 +14,14 @@ public class OR extends Manager {
         course = course2;
     }
 
-    public void approveRegistration(RegisteredCourse registeredCourse, int numberOfStudents, int credits, int semester, String id, Course prereq) {
+    /*public void approveRegistration(RegisteredCourse registeredCourse, int numberOfStudents, int credits, int semester, String id, Course prereq) {
         registeredCourse.setNumberOfStudents(numberOfStudents);
         registeredCourse.setCredits(credits);
         registeredCourse.setSemester(semester);
         try {
             registeredCourse.setPrereq(prereq);
         } catch ()
-    }
+    }*/
 
 
 }
