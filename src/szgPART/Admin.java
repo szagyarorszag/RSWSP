@@ -24,4 +24,6 @@ public class Admin {
         Database.researchers.remove(researcherId);
     }
 
+
+
 }
