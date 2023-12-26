@@ -150,6 +150,34 @@ public class Student extends User implements Observer{
     public int hashCode() {
         return Objects.hash(corporativeEmail, faculty, yearOfStudy,transcript);
     }
+    @Override
+    public String toString() {
+        StringBuilder profile = new StringBuilder();
+        profile.append("My Profile:\n");
+        profile.append("Name: ").append(getName()).append("\n");
+        profile.append("Surname: ").append(getSurname()).append("\n");
+        profile.append("Birth Date: ").append(getBirthDate()).append("\n");
+        profile.append("ID: ").append(getId()).append("\n");
+        profile.append("Year of Study: ").append(getYearOfStudy()).append("\n");
+        profile.append("Corporative Email: ").append(getCorporativeEmail()).append("\n");
+        profile.append("Phone Number: ").append(getPhoneNumber()).append("\n");
+        profile.append("Gender: ").append(getGender()).append("\n");
+        profile.append("Student ID: ").append(getId()).append("\n");
+        profile.append("Address: ").append(getAddress()).append("\n");
+
+
+
+        // Append organizations
+        profile.append("Organizations:\n");
+        for (Map<Organization, OrganizationRole> orgMap : organizations) {
+            for (Map.Entry<Organization, OrganizationRole> entry : orgMap.entrySet()) {
+                profile.append("Organization: ").append(entry.getKey()).append("\n");
+                profile.append("Role: ").append(entry.getValue()).append("\n");
+            }
+        }
+
+        return profile.toString();
+    }
 
 }
 

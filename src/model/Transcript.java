@@ -128,7 +128,7 @@ public class Transcript{
             for (Map.Entry<RegisteredCourse, Mark> entry : markMap.entrySet()) {
                 RegisteredCourse course = entry.getKey();
                 Mark mark = entry.getValue();
-                result.append(course.getTitle()+": "+mark.getMarkLetter()).append("\n");
+                result.append(course.getId()+" " + course.getTitle()+": "+mark.getMarkLetter()).append("\n");
             }
         }
         return result.toString();
