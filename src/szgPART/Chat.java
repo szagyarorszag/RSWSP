@@ -1,6 +1,5 @@
 package szgPART;
 
-
 import java.io.*;
 import java.util.*;
 

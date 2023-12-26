@@ -1,6 +1,7 @@
 package szgPART;
 
 public class Admin {
+
     public Admin() {}
     public void addStudent(Student student){
         Database.students.add(student);
