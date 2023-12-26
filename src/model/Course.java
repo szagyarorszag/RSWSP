@@ -47,11 +47,11 @@ public class Course {
     }
 
     // Getter and Setter for prereq
-    public Course getPrereq() {
+    public Course getPrereq() throws Exception{
         return prereq;
     }
 
-    public void setPrereq(Course prereq) {
+    public void setPrereq(Course prereq) throws Exception{
         this.prereq = prereq;
     }
 

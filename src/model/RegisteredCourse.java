@@ -2,12 +2,12 @@ package model;
 
 import java.util.*;
 
-public class RegisteredCourse extends Course{
+public class RegisteredCourse extends Course implements Subject{
     public RegisteredCourse(){}
     private int year;
     private int semester;
-    //TODO
-    //protected Vector<Teacher> teachers;
+
+    protected Vector<Teacher> teachers;
     private int numberOfStudents;
     private Vector<Student> students;
     public RegisteredCourse(String id, String title, int credits, Faculty faculty, int year, int semester, int numberOfStudents){
@@ -48,8 +48,17 @@ public class RegisteredCourse extends Course{
         return result.toString();
     }
 
+    public void addCourseTeacher(Teacher teacher){
+        teachers.add(teacher);
+    }
 
 
+    public Student getStudent(String id){
+        for(Student s:students){
+            if(s.getId().equals(id)) return s;
+        }
+        return null;
+    }
     public Vector<Student> getStudents(){
         return students;
     }
@@ -65,6 +74,21 @@ public class RegisteredCourse extends Course{
             if(s.equals(student)) return s.toString();
         }
         return "Student isn't found";
+    }
+    //since w only notify students, observer was Replaced by Student
+    public void registerStudent(Student student) {
+        students.add(student);
+        notifyStudent(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+    }
+
+    public void notifyStudent(Student student) {
+        for (Student s : students) {
+            if(s.equals(student)) s.update();
+        }
     }
 
     @Override

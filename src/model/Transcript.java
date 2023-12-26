@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -24,7 +24,7 @@ public class Transcript{
 
         for (Map<RegisteredCourse, Mark> markMap : marks) {
             if (markMap.containsKey(course)) {
-                numOfRetakes += 1;
+                numOfRetakes ++;
                 markMap.put(course, mark);
                 courseFound = true;
                 break; // No need to continue once course is found and updated
@@ -113,7 +113,7 @@ public class Transcript{
         Vector<RegisteredCourse> currentSemesterCourses= new Vector<>();
         for(Map<RegisteredCourse,Mark> markMap: marks){
             for(RegisteredCourse course:markMap.keySet()){
-                if(LocalDateTime.now().getYear() == course.getYear() && course.getSemester() == semester){
+                if(LocalDate.now().getYear() == course.getYear() && course.getSemester() == semester){
                     currentSemesterCourses.add(course);
                 }
 

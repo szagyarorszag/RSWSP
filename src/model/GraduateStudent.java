@@ -19,7 +19,7 @@ public class GraduateStudent extends Student{
     }
 
     public void setSupervisor(Researcher supervisor) {
-        //TODO: if(supervisor.getHIndex()<3){throw new lowQualificationException("h-index of " + supervisor.getName() +" lower than 3!)}
+        //TODO: if(supervisor.getHIndex()<3){System.out.println("h-index of " + supervisor.getName() +" lower than 3!)}
         //else
         this.supervisor = supervisor;
 

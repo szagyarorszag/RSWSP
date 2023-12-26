@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class User implements Serializable, Cloneable, Comparable {
+public class User implements Serializable {
     private String name;
     private String surname;
     private Date birthDate;
@@ -16,6 +16,9 @@ public abstract class User implements Serializable, Cloneable, Comparable {
     private String phoneNumber;
     private String address;
     private Gender gender;
+    private double hIndex;
+    //declared in user, since every person in the university can be researcher
+    private boolean researchStatus;
     //Initialize constructor
     public User(){
 
@@ -30,8 +33,28 @@ public abstract class User implements Serializable, Cloneable, Comparable {
         this.phoneNumber = phoneNumber;
         this.address=address;
         this.gender = gender;
+        this.hIndex=0;
+        this.researchStatus=false;
+    }
+    // Getter method for hIndex
+    public double getHIndex() {
+        return hIndex;
     }
 
+    // Setter method for hIndex
+    public void setHIndex(double hIndex) {
+        this.hIndex = hIndex;
+    }
+
+    // Getter method for researchStatus
+    public boolean isResearchStatus() {
+        return researchStatus;
+    }
+
+    // Setter method for researchStatus
+    public void setResearchStatus(boolean researchStatus) {
+        this.researchStatus = researchStatus;
+    }
     public String getName() {
         return name;
     }
@@ -114,9 +137,10 @@ public abstract class User implements Serializable, Cloneable, Comparable {
         this.name = name;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+
+
+    public int compareTo(User u) {
+        return this.login.compareTo(u.login);
     }
 
     @Override

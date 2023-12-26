@@ -1,10 +1,10 @@
 package model;
 
 import java.util.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 
-public class Student extends User{
+public class Student extends User implements Observer{
     private String corporativeEmail;
 
     private Faculty faculty;
@@ -44,20 +44,35 @@ public class Student extends User{
         this.yearOfStudy=yearOfStudy;
     }
 
-
+    public Vector<Course> getCourses(){
+        return this.enrolledCourses;
+    }
     // Setters for personal information
 
 
     // Academic operations
-    public void registerForCourseRequest(Course course) {
-        //TODO: Admin
-        // Logic to register the student for a course
+    public void registerForCourseRequest(RegisteredCourse registeredCourse) {
+        if(calculateTotalCredits()>21){
+            System.out.println("You cannot access to this course due to credits limit on your account!");
+            return;
+        }
+        for(Course c : enrolledCourses){
+            if(c.getId().equals(registeredCourse.getId())){
+                System.out.println("Cannot register. Already registered for the course.");
+                return;
+            }
+        }
+
+
+
+
     }
 
     public void dropCourseRequest(RegisteredCourse registeredCourse) {
         //TODO: Admin
         // Logic to drop a course
     }
+
 
     public int calculateTotalCredits() {
         return this.transcript.getTotalCredits();
@@ -111,8 +126,12 @@ public class Student extends User{
     public void addPointsToTranscript(RegisteredCourse course, double points) {
         this.transcript.setCourseMark(course,new Mark(points));
     }
-    public void addPointsToCourse(RegisteredCourse course, double points, LocalDateTime localDateTime) {
-        this.transcript.setCourseMark(course,new Mark(points,localDateTime));
+    public void addPointsToCourse(RegisteredCourse course, double points, LocalDate localDate) {
+        this.transcript.setCourseMark(course,new Mark(points,localDate));
+    }
+    @Override
+    public void update() {
+        System.out.println("A new course has been added!");
     }
 
     @Override
