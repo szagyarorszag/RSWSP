@@ -3,49 +3,46 @@ package szgPART;
 import java.io.*;
 import java.util.*;
 
-
 public class Chat implements Serializable {
-    private String chatId;
+    private Integer chatId;
     private List<Message> messages;
     private String filename;
-    public Chat(){}
+    private Employee participant1;
+    private Employee participant2;
+
+    {
+        filename = "chat.ser";
+    }
+
+    public Chat() {}
 
     public Chat(Employee employee1, Employee employee2) {
         this.chatId = generateChatId(employee1, employee2);
         this.messages = new ArrayList<>();
+        this.participant1 = employee1;
+        this.participant2 = employee2;
     }
 
-    private String generateChatId(Employee employee1, Employee employee2) {
-        String sumId = employee1.getId() + employee2.getId();
-        return Integer.toString(Objects.hash(sumId));
+    private Integer generateChatId(Employee employee1, Employee employee2) {
+        Integer sumId = employee1.getId().hashCode() + employee2.getId().hashCode();
+        return Objects.hash(sumId);
     }
 
     public void addMessage(Message message) {
         messages.add(message);
     }
-    public User getOtherParticipant(User currentParticipant) {
-        for (Message message : messages) {
-            User sender = message.getSender();
-            User recipient = message.getRecipient();
 
-            if (sender.equals(currentParticipant)) {
-                return recipient;
-            } else if (recipient.equals(currentParticipant)) {
-                return sender;
-            }
+    public Employee getOtherParticipant(Employee currentParticipant) {
+        if (participant1.equals(currentParticipant)) {
+            return participant2;
+        } else if (participant2.equals(currentParticipant)) {
+            return participant1;
+        } else {
+            throw new IllegalArgumentException("The provided participant is not part of the chat.");
         }
-
-        throw new IllegalArgumentException("The provided participant is not part of the chat.");
     }
 
-
-    /**
-     * Serialize the Chat object to a specified file.
-     *
-     * @param filename The name of the file to serialize the chat to.
-     * @throws IOException            If an I/O error occurs during serialization.
-     */
-    public void serialize (String filename) throws IOException {
+    public void serialize(String filename) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(this);
         } catch (IOException e) {
@@ -53,15 +50,7 @@ public class Chat implements Serializable {
         }
     }
 
-    /**
-     * Deserialize a Chat object from a specified file.
-     *
-     * @param filename The name of the file to deserialize the chat from.
-     * @return The deserialized Chat object.
-     * @throws IOException            If an I/O error occurs during deserialization.
-     * @throws ClassNotFoundException If the class of a serialized object cannot be found.
-     */
-    public static Chat deserialize (String filename) throws IOException, ClassNotFoundException {
+    public static Chat deserialize(String filename) throws IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             return (Chat) ois.readObject();
         } catch (IOException e) {
@@ -72,14 +61,11 @@ public class Chat implements Serializable {
     }
 
     @Override
-    public String toString () {
-        String allMessages = "";
+    public String toString() {
+        StringBuilder allMessages = new StringBuilder();
         for (Message message : messages) {
-            allMessages.concat(message.toString() + '\n');}
-        return chatId + ' ' + allMessages;
+            allMessages.append(message.toString()).append('\n');
+        }
+        return chatId + " " + allMessages + '\n';
     }
-
 }
-
-
-

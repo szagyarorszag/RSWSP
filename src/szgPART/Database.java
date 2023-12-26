@@ -1,29 +1,13 @@
 package szgPART;
 
 import java.io.*;
+//singleton
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 public class Database implements Serializable {
-    public static void main(String[] args) throws IOException {
-        String filename = "src/assets/news.ser";
-
-        News news1 = new News("Title", "Text");
-        News news3 = new News("Mainn", "Info");
-
-        Vector<Object> newss = loadObjectsFromFile(filename);
-
-        newss.add(news1);
-        newss.add(news3);
-        saveToFile(newss, filename);
-        for (Object obj : loadObjectsFromFile(filename)) {
-            News news = (News) obj;
-            System.out.println(news.toString());
-        }
-
-    }
 
     public static Vector<Log> logs;
     public static Vector<Student> students;

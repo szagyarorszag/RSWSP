@@ -1,6 +1,7 @@
 package szgPART;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
@@ -8,7 +9,7 @@ import java.util.Objects;
 public abstract class User implements Serializable {
     private String name;
     private String surname;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String corporativeEmail;
     private String login;
     private String password;
@@ -23,7 +24,7 @@ public abstract class User implements Serializable {
     public User(){
 
     }
-    public User(String name, String surname, Date birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender){
+    public User(String name, String surname, LocalDate birthDate, String id, String login, String password, String phoneNumber, String address, Gender gender){
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
@@ -63,7 +64,7 @@ public abstract class User implements Serializable {
         return surname;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
@@ -125,7 +126,7 @@ public abstract class User implements Serializable {
         this.corporativeEmail = corporativeEmail;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
