@@ -2,6 +2,7 @@ package control;
 
 import assets.Faculty;
 import assets.Gender;
+import assets.TeacherType;
 import model.*;
 
 import java.io.BufferedReader;
@@ -56,7 +57,48 @@ public class AdminControl {
     }
     public static Teacher makeTeacher() throws IOException {
         User user = getGeneralUserInfo();
-        System.out.print();
+
+        System.out.print("Enter work expirience : ");
+        int workExpirience = bufferedReader.read();
+        System.out.print("Enter Faculty (FIT/MCM/ISE/BS/KMA): ");
+        String facultyCase = bufferedReader.readLine();
+        Faculty faculty = null;
+        switch (facultyCase) {
+            case "FIT":
+                faculty = Faculty.FIT;
+                break;
+            case "MCM":
+                faculty = Faculty.MCM;
+                break;
+            case "ISE":
+                faculty = Faculty.ISE;
+                break;
+            case "BS":
+                faculty = Faculty.BS;
+                break;
+            case "KMA":
+                faculty = Faculty.KMA;
+                break;
+        }
+        System.out.print("Enter Type (TUTOR/LECTOR/PROFESSOR): ");
+        String typeCase = bufferedReader.readLine();
+        TeacherType type = null;
+        switch (typeCase) {
+            case "TUTOR":
+                type = TeacherType.TUTOR;
+                break;
+            case "LECTOR":
+                type = TeacherType.LECTOR;
+                break;
+            case "PROFESSOR":
+                type = TeacherType.PROFESSOR;
+                break;
+        }
+        Teacher teacher = (Teacher) user;
+        teacher.setFaculty(faculty);
+        teacher.setWorkExperience(workExpirience);
+        teacher.setTeacherType(type);
+        return teacher;
     }
     public static Student makeStudent() throws IOException {
         User user = getGeneralUserInfo();
@@ -89,23 +131,18 @@ public class AdminControl {
         return student;
     };
 
-    public static boolean viewMenu(Student student) throws IOException {
+    public static boolean viewMenu(User user) throws IOException {
         while(true) {
             System.out.println("\nMenu: \n"+ "1. My details\n"
                     +"2. Add Student\n"
                     +"3. Add Teacher\n"
-                    +"4. Add Manager\n"
-                    +"5. Add Admin\n"
-                    +"6. Add Researcher\n"
-                    +"7. Add TechSupport\n"
-                    +"8. \n"
                     +"9. News\n"
                     +"0. Log Out");
 
             String choose = bufferedReader.readLine();
             switch (choose){
                 case "1":
-                    System.out.println(student.toString());
+                    System.out.println(user.toString());
                     break;
                 case "2":
                     Vector<Object> students = Database.loadObjectsFromFile("src/assets/students.ser");
@@ -114,7 +151,8 @@ public class AdminControl {
                     break;
                 case "3":
                     Vector<Object> teachers = Database.loadObjectsFromFile("src/assets/teachers.ser");
-                    teachers.add();
+                    teachers.add(makeTeacher());
+                    Database.saveToFile(teachers,"src/assets/teachers.ser");
                     break;
                 case "4":
 

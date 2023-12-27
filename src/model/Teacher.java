@@ -39,6 +39,10 @@ public class Teacher extends Employee{
         this.rate=rate;
     }
 
+    public void setTeacherType(TeacherType type) {
+        this.teacherType = type;
+    }
+
     public double getRate(){
         return this.rate;
     }

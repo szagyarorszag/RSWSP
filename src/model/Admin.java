@@ -2,6 +2,7 @@ package model;
 
 import assets.Faculty;
 import assets.Gender;
+import assets.TeacherType;
 import model.*;
 
 import java.io.IOException;
@@ -63,13 +64,30 @@ public class Admin extends User implements Serializable {
                 "80",
                 Gender.QUASO,
                 "TOLEBI59E", Faculty.FIT);
+        Teacher teacher1 = new Teacher("Alphe", "Bete",
+                LocalDate.now(), "GAMME",
+                "teacher1", "admin",
+                "SCHTRICHE",
+                "80",
+                Gender.QUASO,
+                15, Faculty.FIT, TeacherType.PROFESSOR);
+        Teacher teacher2 = new Teacher("Deta", "Teta",
+                LocalDate.now(), "GAMME",
+                "teacher2", "admin",
+                "SCHTRICHE",
+                "80",
+                Gender.QUASO,
+                15, Faculty.FIT, TeacherType.PROFESSOR);
         News news = new News("Deadline is over", "Deadline of OOP project is over");
         News news2 = new News("Oral exam is little soon", "Zhaniya and Sultan should pass exam at 5PM");
         Vector<Object> nwObjects = new Vector<Object>();
         Vector<Object> stObjects = new Vector<Object>();
         Vector<Object> usObjects = new Vector<Object>();
+        Vector<Object> tcObjects = new Vector<Object>();
         User user1 = (User) st;
         User user2 = (User) st2;
+        tcObjects.add(teacher1);
+        tcObjects.add(teacher2);
         stObjects.add(st);
         stObjects.add(st2);
         usObjects.add(user1);
@@ -79,5 +97,6 @@ public class Admin extends User implements Serializable {
         Database.saveToFile(usObjects, "src/assets/users.ser");
         Database.saveToFile(stObjects, "src/assets/students.ser");
         Database.saveToFile(nwObjects, "src/assets/news.ser");
+        Database.saveToFile(tcObjects, "src/assets/teachers.ser");
     }
 }
