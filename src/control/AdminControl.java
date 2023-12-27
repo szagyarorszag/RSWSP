@@ -19,6 +19,76 @@ public class AdminControl {
         Database.saveToFile(objects,"src/assets/logs.ser");
     }
 
+    public static User getGeneralUserInfo() throws IOException {
+        System.out.print("Enter name : ");
+        String name = bufferedReader.readLine();
+        System.out.print("Enter surname : ");
+        String surname = bufferedReader.readLine();
+        System.out.println("Imagine that u were born now " + LocalDate.now());
+        LocalDate date = LocalDate.now();
+        System.out.print("Enter id : ");
+        String id = bufferedReader.readLine();
+        System.out.print("Enter login : ");
+        String login = bufferedReader.readLine();
+        System.out.print("Enter password : ");
+        String password = bufferedReader.readLine();
+        System.out.print("Enter phoneNumber : ");
+        String phoneNumber = bufferedReader.readLine();
+        System.out.print("Enter address : ");
+        String address = bufferedReader.readLine();
+        System.out.print("Enter Gender (M/F/QUASO) : ");
+        String genderr = bufferedReader.readLine();
+        Gender gender = null;
+        switch(genderr) {
+            case "M":
+                gender = Gender.MALE;
+                break;
+            case "F":
+                gender = Gender.FEMALE;
+                break;
+            case "QUASO":
+                gender = Gender.QUASO;
+                break;
+
+        }
+
+        return new User(name, surname, date, id, login, password, phoneNumber, address, gender);
+    }
+    public static Teacher makeTeacher() throws IOException {
+        User user = getGeneralUserInfo();
+        System.out.print();
+    }
+    public static Student makeStudent() throws IOException {
+        User user = getGeneralUserInfo();
+        System.out.print("Enter year of study : ");
+        int yearOfStudy = bufferedReader.read();
+
+        System.out.print("Enter Faculty (FIT/MCM/ISE/BS/KMA): ");
+        String facultyCase = bufferedReader.readLine();
+        Faculty faculty = null;
+        switch (facultyCase) {
+            case "FIT":
+                faculty = Faculty.FIT;
+                break;
+            case "MCM":
+                faculty = Faculty.MCM;
+                break;
+            case "ISE":
+                faculty = Faculty.ISE;
+                break;
+            case "BS":
+                faculty = Faculty.BS;
+                break;
+            case "KMA":
+                faculty = Faculty.KMA;
+                break;
+        }
+        Student student = (Student) user;
+        student.setYearOfStudy(yearOfStudy);
+        student.setFaculty(faculty);
+        return student;
+    };
+
     public static boolean viewMenu(Student student) throws IOException {
         while(true) {
             System.out.println("\nMenu: \n"+ "1. My details\n"
@@ -38,51 +108,13 @@ public class AdminControl {
                     System.out.println(student.toString());
                     break;
                 case "2":
-                    /* String name,
-                    String surname,
-                    LocalDate birthDate,
-                    String id,
-                    int yearOfStudy,
-                    String login,
-                    String password,
-                    String phoneNumber,
-                    Gender gender,
-                    String studentId,
-                    String address,
-                    Faculty faculty*/
-                    System.out.print("Enter name : ");
-                    String name = bufferedReader.readLine();
-                    System.out.print("Enter surname : ");
-                    String surname = bufferedReader.readLine();
-                    System.out.println("Imagine that u were born now " + LocalDate.now());
-                    LocalDate date = LocalDate.now();
-                    System.out.print("Enter id : ");
-                    String id = bufferedReader.readLine();
-                    System.out.print("Enter year of study : ");
-                    Integer course = bufferedReader.read();
-                    System.out.print("Enter login : ");
-                    String login = bufferedReader.readLine();
-                    System.out.print("Enter password : ");
-                    String password = bufferedReader.readLine();
-                    System.out.print("Enter phoneNumber : ");
-                    String phoneNumber = bufferedReader.readLine();
-                    System.out.print("Enter Gender M/F/QUASO : ");
-                    String genderr = bufferedReader.readLine();
-                    Gender gender = null;
-                    switch(genderr) {
-                        case "M":
-                            gender = Gender.MALE;
-                            break;
-                        case "F":
-                            gender = Gender.FEMALE;
-                            break;
-                        case "QUASO":
-                            gender = Gender.QUASO;
-                            break;
-                    }
+                    Vector<Object> students = Database.loadObjectsFromFile("src/assets/students.ser");
+                    students.add(makeStudent());
+                    Database.saveToFile(students,"src/assets/students.ser") ;
                     break;
                 case "3":
-                    System.out.println(student.viewTranscript());
+                    Vector<Object> teachers = Database.loadObjectsFromFile("src/assets/teachers.ser");
+                    teachers.add();
                     break;
                 case "4":
 

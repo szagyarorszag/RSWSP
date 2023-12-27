@@ -26,7 +26,7 @@ public class Student extends User implements Observer{
     // Constructor
     public Student(String name, String surname, LocalDate birthDate, String id, int yearOfStudy, String login, String password, String phoneNumber, Gender gender, String address, Faculty faculty) {
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender);
-        this.corporativeEmail = name.substring(0, 1).toLowerCase() + "_" + surname.toLowerCase() + "@rswsp.kz";
+
         this.transcript = new Transcript(this);
         this.enrolledCourses = new Vector<>();
         this.registeredCourses = new Vector<>();
@@ -36,6 +36,9 @@ public class Student extends User implements Observer{
     }
 
     // Accessors and Mutators for personal information
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
 
     public String getCorporativeEmail() {
         return corporativeEmail;
@@ -45,6 +48,9 @@ public class Student extends User implements Observer{
     }
     public void setYearOfStudy(int yearOfStudy){
         this.yearOfStudy=yearOfStudy;
+    }
+    public void generateCorporativeEmail(){
+        this.corporativeEmail = getName().substring(0, 1).toLowerCase() + "_" + getSurname().toLowerCase() + "@rswsp.kz";
     }
 
     public Vector<Course> getCourses(){

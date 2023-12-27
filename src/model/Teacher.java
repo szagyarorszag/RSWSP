@@ -63,13 +63,16 @@ public class Teacher extends Employee{
         System.out.println("Something gone wrong, check your information again!");
     }
 
-    public Message createComplaint(Message message, Manager manager){
+    public Message createComplaint(Message message, Teacher teacher/*Manager manager*/){
         String complaint = LocalDateTime.now().getMonth() +" "+ LocalDateTime.now().getDayOfMonth()+ ", " +LocalDateTime.now().getYear() + '\n' + super.getName();
-        if(manager.getGender() == Gender.MALE) complaint+="Dear Mr.";
+        //if(manager.getGender() == Gender.MALE) complaint+="Dear Mr.";
+        if(teacher.getGender() == Gender.MALE) complaint+="Dear Mr.";
         else complaint+="Dear Mrs.";
-        complaint+=manager.getSurname()+'\n';
+        //complaint+=manager.getSurname()+'\n';
+        complaint+=teacher.getSurname()+'\n';
         complaint+=message.getMessage();
-        return new Message(this, manager, complaint, LocalDate.now());
+       // return new Message(this, manager, complaint, LocalDate.now());
+        return new Message(this, teacher, complaint, LocalDate.now());
 
     }
     public String viewStudents(RegisteredCourse course){
