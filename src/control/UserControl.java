@@ -41,12 +41,13 @@ public class UserControl {
             System.out.println("Добро пожаловать в RSWSP");
         }
         while(true) {
-            System.out.println("Enter login");
+            System.out.print("Enter login : ");
             String login = br.readLine();
-            System.out.println("Enter password");
+            System.out.print("Enter password : ");
             String password = br.readLine();
 
             User user = isLoginAndPasswordCorrect(login, password);
+
             if (user == null) {
                 System.out.println("Wrong password or login .Try again");
                 continue;
@@ -65,7 +66,6 @@ public class UserControl {
             if (user instanceof Researcher) {
                 /*researcher control*/
             }
-
         }
     }
 }

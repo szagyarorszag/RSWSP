@@ -16,7 +16,7 @@ public class GraduateStudent extends Student{
 
     }
     public GraduateStudent(String name, String surname, LocalDate birthDate, String id, int yearOfStudy, String login, String password, String phoneNumber, Gender gender, String studentId, String address, Faculty faculty, Researcher supervisor){
-        super(name, surname, birthDate, id, yearOfStudy, login, password, phoneNumber, gender, studentId, address, faculty);
+        super(name, surname, birthDate, id, yearOfStudy, login, password, phoneNumber, gender, address, faculty);
         this.supervisor = supervisor;
     }
 

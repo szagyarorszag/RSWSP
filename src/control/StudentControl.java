@@ -43,7 +43,10 @@ public class StudentControl {
                 case "5":
                     System.out.println("Do u want to exit ?Y/N");
                     String mode = bufferedReader.readLine();
-                    if(mode.equals("Y")) break;
+                    if(mode.equals("Y")) {
+                        UserControl.login();
+                        break;
+                    }
 
             }
         }

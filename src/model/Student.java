@@ -24,7 +24,7 @@ public class Student extends User implements Observer{
     }
 
     // Constructor
-    public Student(String name, String surname, LocalDate birthDate, String id, int yearOfStudy, String login, String password, String phoneNumber, Gender gender, String studentId, String address, Faculty faculty) {
+    public Student(String name, String surname, LocalDate birthDate, String id, int yearOfStudy, String login, String password, String phoneNumber, Gender gender, String address, Faculty faculty) {
         super(name,surname, birthDate, id, login, password, phoneNumber, address, gender);
         this.corporativeEmail = name.substring(0, 1).toLowerCase() + "_" + surname.toLowerCase() + "@rswsp.kz";
         this.transcript = new Transcript(this);

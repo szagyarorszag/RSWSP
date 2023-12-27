@@ -5,10 +5,12 @@ import assets.Gender;
 import model.*;
 
 import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Vector;
 
-public class Admin {
+public class Admin extends User implements Serializable {
 
     public Admin() {
     }
@@ -52,15 +54,14 @@ public class Admin {
                 2, "admin",
                 "admin", "800",
                 Gender.QUASO,
-                "GAMMAK",
+
                 "TOLEBI59", Faculty.FIT);
         Student st2 = new Student("Alphe", "Bete",
                 LocalDate.now(), "GAMME",
                 2, "adminn",
-                "SCHTRICHE", "80",
+                "SCHTRICHE",
+                "80",
                 Gender.QUASO,
-
-                "GAMMAKE",
                 "TOLEBI59E", Faculty.FIT);
         News news = new News("Deadline is over", "Deadline of OOP project is over");
         News news2 = new News("Oral exam is little soon", "Zhaniya and Sultan should pass exam at 5PM");
