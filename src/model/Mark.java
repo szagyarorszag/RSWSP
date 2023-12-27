@@ -1,12 +1,10 @@
 package model;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 public class Mark {
     private double examPoints;
     private double firstAtt;
     private double secondAtt;
-    private double GPA;
-    private String markLetter;
     private Map<String, Double> map;
     private double total;
     public Mark() {
@@ -20,10 +18,10 @@ public class Mark {
             System.out.println(e.getMessage());
         }
     }
-    public Mark(double points,LocalDateTime localDateTime) {
+    public Mark(double points,LocalDate localDate) {
         this.map = createLetterToGPA();
         try{
-            this.addPoints(points,localDateTime);
+            this.addPoints(points,localDate);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -31,9 +29,9 @@ public class Mark {
 
     public void addPoints(double points) throws Exception {
 
-        int month = LocalDateTime.now().getMonthValue();
+        int month = LocalDate.now().getMonthValue();
 
-        if ((month >= 1 && month <= 2) || (month >= 9 && month <= 10)) {
+        if ((month == 1 && month <= 2) || (month >= 9 && month <= 10)) {
             this.firstAtt += points;
         } else if ((month >= 3 && month <= 4) || (month == 11)) {
             this.secondAtt += points;
@@ -43,8 +41,8 @@ public class Mark {
             throw new Exception("We're on vacation");
         }
     }
-    public void addPoints(double points, LocalDateTime localDateTime) throws Exception {
-        int month = localDateTime.getMonthValue();
+    public void addPoints(double points, LocalDate localDate) throws Exception {
+        int month = localDate.getMonthValue();
 
         if ((month >= 1 && month <= 2) || (month >= 9 && month <= 10)) {
             this.firstAtt += points;

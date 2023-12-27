@@ -1,7 +1,8 @@
 package model;
 
-public class Course {
+import assets.Faculty;
 
+public class Course {
     private  String id;
     private String title;
     private int credits;
@@ -47,11 +48,11 @@ public class Course {
     }
 
     // Getter and Setter for prereq
-    public Course getPrereq() {
+    public Course getPrereq() throws Exception{
         return prereq;
     }
 
-    public void setPrereq(Course prereq) {
+    public void setPrereq(Course prereq) throws Exception{
         this.prereq = prereq;
     }
 

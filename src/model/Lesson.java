@@ -1,4 +1,8 @@
 package model;
+import assets.Format;
+import assets.LessonType;
+import assets.Week;
+
 import java.time.*;
 public class Lesson {
     private RegisteredCourse course;
@@ -105,3 +109,4 @@ public class Lesson {
         this.lessonType = lessonType;
     }
 }
+

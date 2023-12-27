@@ -1,16 +1,17 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.*;
 
 
-public class Transcript{
+public class Transcript implements Serializable {
     private Vector<Map<RegisteredCourse,Mark> >marks;
     private int numOfRetakes;
     private double gpa;
     private Student owner;
 
-    public Transcript(szgPART.Student student){
+    public Transcript(){
         numOfRetakes=0;
     }
     public Transcript(Student owner){
@@ -24,7 +25,7 @@ public class Transcript{
 
         for (Map<RegisteredCourse, Mark> markMap : marks) {
             if (markMap.containsKey(course)) {
-                numOfRetakes += 1;
+                numOfRetakes ++;
                 markMap.put(course, mark);
                 courseFound = true;
                 break; // No need to continue once course is found and updated
@@ -113,7 +114,7 @@ public class Transcript{
         Vector<RegisteredCourse> currentSemesterCourses= new Vector<>();
         for(Map<RegisteredCourse,Mark> markMap: marks){
             for(RegisteredCourse course:markMap.keySet()){
-                if(LocalDateTime.now().getYear() == course.getYear() && course.getSemester() == semester){
+                if(LocalDate.now().getYear() == course.getYear() && course.getSemester() == semester){
                     currentSemesterCourses.add(course);
                 }
 
@@ -128,7 +129,7 @@ public class Transcript{
             for (Map.Entry<RegisteredCourse, Mark> entry : markMap.entrySet()) {
                 RegisteredCourse course = entry.getKey();
                 Mark mark = entry.getValue();
-                result.append(course.getTitle()+": "+mark.getMarkLetter()).append("\n");
+                result.append(course.getId()+" " + course.getTitle()+": "+mark.getMarkLetter()).append("\n");
             }
         }
         return result.toString();

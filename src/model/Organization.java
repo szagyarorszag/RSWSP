@@ -1,5 +1,5 @@
 package model;
-import model.Faculty;
+import assets.Faculty;
 
 import java.util.Date;
 import java.util.EnumSet;

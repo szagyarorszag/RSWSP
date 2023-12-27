@@ -1,7 +1,0 @@
-package szgPART;
-
-public enum RequestType {
-    GET_TRANSRCRIPT,
-    GET_MILITARY_REGISTRATION,
-    GET_EDUCATION_CONFIRMATION
-}
