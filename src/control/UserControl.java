@@ -77,10 +77,10 @@ public class UserControl {
                 StudentControl.viewMenu((Student) user);
             }
             else if (user instanceof Admin) {
-                /*teacher control*/
+                AdminControl.viewMenu((Admin) user);
             }
             else if (user instanceof Teacher) {
-                /*teacher control*/
+                TeacherControl.viewMenu((Teacher) user);
             }
             else if (user instanceof Manager) {
                 /*manager control*/

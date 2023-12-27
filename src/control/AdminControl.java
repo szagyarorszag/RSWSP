@@ -136,6 +136,7 @@ public class AdminControl {
             System.out.println("\nMenu: \n"+ "1. My details\n"
                     +"2. Add Student\n"
                     +"3. Add Teacher\n"
+                    +"4. Delete User\n"
                     +"9. News\n"
                     +"0. Log Out");
 
@@ -155,13 +156,25 @@ public class AdminControl {
                     Database.saveToFile(teachers,"src/assets/teachers.ser");
                     break;
                 case "4":
+                    System.out.println("Enter login to delete user(I wish u wont delete yourself;) ) : ");
+                    String login = bufferedReader.readLine();
+                    Vector<Object> users = Database.loadObjectsFromFile("src/assets/students.ser");
+
+                    for(Object o : users) {
+                        User u = (User) o;
+                        if(u.getLogin().equals(login)) users.remove(o);
+                    }
+                    Database.saveToFile(users, "src/assets/");
+
+                    break;
+                case "9":
 
                     for(Object n: Database.loadObjectsFromFile("src/assets/news.ser")){
                         News news = (News) n;
                         System.out.println(news.toString()+'\n');
                     }
                     break;
-                case "5":
+                case "0":
                     System.out.println("Do u want to exit ?Y/N");
                     String mode = bufferedReader.readLine();
                     if(mode.equals("Y")) {

@@ -43,9 +43,9 @@ public class TeacherControl {
                     System.out.println("Paste recipient's (must be teacher) id: ");
                     String recipientId = bufferedReader.readLine();
                     boolean recipientIsFound=false;
-                    for(Object o:Database.loadObjectsFromFile("src/assets/employee.ser")){
+                    for(Object o:Database.loadObjectsFromFile("src/assets/teachers.ser")){
                         Teacher t = (Teacher) o;
-                        if(teacher.getId().equals(recipientId)){
+                        if(t.getId().equals(recipientId)){
                             recipientIsFound=true;
                             System.out.println("Paste complaint text: \n");
                             String complaintText = bufferedReader.readLine();
