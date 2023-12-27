@@ -26,8 +26,8 @@ public class StudentControl {
                     System.out.println(student.toString());
                     break;
                 case "2":
-                    ResearcherDecorator studentResearcher = new ResearcherDecorator(student);
-                    studentResearcher.conductResearch();
+                    Researcher studentResearcher = new ResearcherDecorator(student);
+                    System.out.println(studentResearcher.conductResearch());
                     doResearchLog(student);
                     break;
                 case "3":
@@ -46,7 +46,7 @@ public class StudentControl {
                     if(mode.equals("Y")) {
                         UserControl.login();
                         break;
-                    }
+                    } else continue;
 
             }
         }

@@ -1,13 +1,10 @@
 package model;
-
-
 import assets.Faculty;
 import assets.Gender;
 
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Vector;
-
 public class GraduateStudent extends Student{
     private Researcher supervisor;
     private Vector<ResearchPaper> diploma;

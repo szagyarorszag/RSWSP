@@ -51,10 +51,35 @@ public class AdminControl {
                     String address,
                     Faculty faculty*/
                     System.out.print("Enter name : ");
-                    bufferedReader.readLine();
+                    String name = bufferedReader.readLine();
                     System.out.print("Enter surname : ");
-                    bufferedReader.readLine();
-
+                    String surname = bufferedReader.readLine();
+                    System.out.println("Imagine that u were born now " + LocalDate.now());
+                    LocalDate date = LocalDate.now();
+                    System.out.print("Enter id : ");
+                    String id = bufferedReader.readLine();
+                    System.out.print("Enter year of study : ");
+                    Integer course = bufferedReader.read();
+                    System.out.print("Enter login : ");
+                    String login = bufferedReader.readLine();
+                    System.out.print("Enter password : ");
+                    String password = bufferedReader.readLine();
+                    System.out.print("Enter phoneNumber : ");
+                    String phoneNumber = bufferedReader.readLine();
+                    System.out.print("Enter Gender M/F/QUASO : ");
+                    String genderr = bufferedReader.readLine();
+                    Gender gender = null;
+                    switch(genderr) {
+                        case "M":
+                            gender = Gender.MALE;
+                            break;
+                        case "F":
+                            gender = Gender.FEMALE;
+                            break;
+                        case "QUASO":
+                            gender = Gender.QUASO;
+                            break;
+                    }
                     break;
                 case "3":
                     System.out.println(student.viewTranscript());
@@ -73,7 +98,6 @@ public class AdminControl {
                         UserControl.login();
                         break;
                     }
-
             }
         }
     }

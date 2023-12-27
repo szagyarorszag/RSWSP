@@ -1,5 +1,7 @@
 package assets;
 
 public enum Gender {
-    MALE,FEMALE,QUASO
+    MALE,
+    FEMALE,
+    QUASO
 }
