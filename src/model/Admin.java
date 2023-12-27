@@ -45,7 +45,7 @@ public class Admin {
         return Database.loadObjectsFromFile("src/assets/logs.ser");
     }
 
-    public static void zakinutStudentov() throws IOException {
+    public static void zakinutVse() throws IOException {
 
         Student st = new Student("Alpha", "Beta",
                 LocalDate.now(), "GAMMA",
@@ -72,5 +72,7 @@ public class Admin {
         usObjects.add(st2);
         Database.saveToFile(usObjects, "src/assets/users.ser");
         Database.saveToFile(stObjects, "src/assets/students.ser");
+        News news =
+
     }
 }

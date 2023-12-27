@@ -11,36 +11,10 @@ import assets.Gender;
 import assets.Faculty;
 public class UserControl {
     public static void main(String [] args) throws IOException {
+        Admin.zakinutVse();
         UserControl.login();
     }
-    public static void zakinutStudentov() throws IOException {
 
-        Student st = new Student("Alpha", "Beta",
-                LocalDate.now() , "GAMMA",
-                2, "admin",
-                "admin", "800",
-                Gender.QUASO,
-                "GAMMAK",
-                "TOLEBI59",Faculty.FIT);
-        Student st2 = new Student("Alphe", "Bete",
-                LocalDate.now() , "GAMME",
-                2, "adminn",
-                "SCHTRICHE", "80",
-                Gender.QUASO,
-
-                "GAMMAKE",
-                "TOLEBI59E",Faculty.FIT);
-        Vector<Object> stObjects = new Vector<Object>();
-        Vector<Object> usObjects = new Vector<Object>();
-        stObjects.add(st);
-        stObjects.add(st2);
-        User user1 = (User) st;
-        User user2 = (User) st2;
-        usObjects.add(st);
-        usObjects.add(st2);
-        Database.saveToFile(usObjects, "src/assets/users.ser");
-        Database.saveToFile(stObjects, "src/assets/students.ser");
-    }
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static void saveEnterLog(User user) throws IOException {
         Log log = new Log(user.getId(),"SUCCESFUL ENTER");
@@ -65,7 +39,7 @@ public class UserControl {
             String login = br.readLine();
             System.out.println("Enter password");
             String password = br.readLine();
-            zakinutStudentov();
+
             User user = isLoginAndPasswordCorrect(login, password);
             if (user == null) {
                 System.out.println("Wrong password or login .Try again");
