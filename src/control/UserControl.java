@@ -1,4 +1,5 @@
 package control;
+import assets.Language;
 import model.*;
 
 import java.io.BufferedReader;
@@ -33,7 +34,12 @@ public class UserControl {
         return null;
     }
     public static void login() throws IOException {
-        System.out.println("Welcome to RSWSP\n");
+        Language language = Language.EN;
+        if (language == Language.EN) {
+            System.out.println("Welcome to RSWSP\n");
+        } else if ( language == Language.RU ) {
+            System.out.println("Добро пожаловать в RSWSP");
+        }
         while(true) {
             System.out.println("Enter login");
             String login = br.readLine();
@@ -45,12 +51,6 @@ public class UserControl {
                 System.out.println("Wrong password or login .Try again");
                 continue;
             }
-
-            for( Object o : getNews()) {
-                News news = (News) o;
-                System.out.println(news.toString());
-            }
-
             UserControl.saveEnterLog(user);
 
             if (user instanceof Student) {
@@ -65,11 +65,7 @@ public class UserControl {
             if (user instanceof Researcher) {
                 /*researcher control*/
             }
-            else {
-                System.out.println("Do u want to exit ?Y/N");
-                String mode = br.readLine();
-                if(mode.equals("Y")) break;
-            }
+
         }
     }
 }

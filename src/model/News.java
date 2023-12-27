@@ -1,18 +1,19 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.*;
 import java.time.LocalDate;
 
-public class News {
+public class News implements Serializable {
     private String title;
     private String text;
     private LocalDate date;
 
-    public News(String title, String topic, String text, LocalDate date) {
+    public News(String title,String text) {
         this.title = title;
         this.text = text;
-        this.date = date;
+        this.date = LocalDate.now();
     }
     public String getTitle() {
         return title;
@@ -41,4 +42,12 @@ public class News {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "News{" +
+                "title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

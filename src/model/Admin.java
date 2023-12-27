@@ -62,17 +62,21 @@ public class Admin {
 
                 "GAMMAKE",
                 "TOLEBI59E", Faculty.FIT);
+        News news = new News("Deadline is over", "Deadline of OOP project is over");
+        News news2 = new News("Oral exam is little soon", "Zhaniya and Sultan should pass exam at 5PM");
+        Vector<Object> nwObjects = new Vector<Object>();
         Vector<Object> stObjects = new Vector<Object>();
         Vector<Object> usObjects = new Vector<Object>();
         User user1 = (User) st;
         User user2 = (User) st2;
         stObjects.add(st);
         stObjects.add(st2);
-        usObjects.add(st);
-        usObjects.add(st2);
+        usObjects.add(user1);
+        usObjects.add(user2);
+        nwObjects.add(news);
+        nwObjects.add(news2);
         Database.saveToFile(usObjects, "src/assets/users.ser");
         Database.saveToFile(stObjects, "src/assets/students.ser");
-        News news =
-
+        Database.saveToFile(nwObjects, "src/assets/news.ser");
     }
 }

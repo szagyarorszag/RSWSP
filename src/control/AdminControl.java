@@ -1,9 +1,13 @@
-package control ;
-import java.util.*;
-import java.io.*;
+package control;
 
 import model.*;
-public class StudentControl {
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Vector;
+
+public class AdminControl {
     static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     public static void doResearchLog(Student student) throws IOException {
         Log log = new Log(student.getId(),"SUCCESFUL RESEARCH");
@@ -15,7 +19,12 @@ public class StudentControl {
     public static boolean viewMenu(Student student) throws IOException {
         while(true) {
             System.out.println("\nMenu: \n"+ "1. My details\n"
-                    +"2. Research\n"
+                    +"2. Add Student\n"
+                    +"2. Add Teacher\n"
+                    +"2. Add Manager\n"
+                    +"2. Add Admin\n"
+                    +"2. Add Researcher\n"
+                    +"2. Add Student\n"
                     +"3. View Transcript\n"
                     +"4. News\n"
                     +"5. Log Out");
@@ -49,6 +58,3 @@ public class StudentControl {
         }
     }
 }
-
-
-
